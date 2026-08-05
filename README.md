@@ -1,25 +1,63 @@
 # Masarifi Pro
 
-تطبيق أندرويد لإدارة الحسابات والمصاريف والعمليات المالية مع دعم المزامنة بين عدة أجهزة.
+A personal finance Android application developed primarily in Java.
 
-## المميزات
+Masarifi Pro helps users manage income, expenses, balances, and financial transactions across multiple currencies. It supports offline usage, multi-device synchronization, data export, QR sharing, and application updates through GitHub Releases.
 
-- مزامنة العمليات عبر الحساب نفسه بين عدة أجهزة.
-- إدارة عمليات القبض والدفع والمصاريف.
-- دعم عدة عملات.
-- عرض الرصيد قبل وبعد العملية.
-- تصدير التقارير بصيغ PDF وExcel وCSV.
-- منع تكرار العمليات أثناء المزامنة.
-- العمل محلياً مع المزامنة عند توفر الإنترنت.
+## Features
 
-## تنزيل التطبيق
+- Income and expense tracking
+- Multi-currency support
+- Transaction filtering and management
+- Balance history before and after transactions
+- Payment status tracking
+- CSV and PDF export
+- QR-based data sharing
+- Offline local data storage
+- Multi-device synchronization
+- Duplicate transaction prevention during synchronization
+- Automatic update checking through GitHub Releases
+- Arabic and English interface support
 
-يمكن تنزيل أحدث نسخة من قسم Releases.
+## Technologies
 
-## الإصدار الحالي
+- Java
+- Android SDK
+- XML Layouts
+- Firebase
+- Local data storage
+- Gradle
+- Git and GitHub
 
-Masarifi Pro 1.1.1
+## Download
 
-## تنبيه
+The latest signed APK is available from GitHub Releases:
 
-التطبيق حالياً موزع مباشرة بصيغة APK، وليس منشوراً على Google Play.
+[Download the latest Masarifi Pro release](https://github.com/mohammdalloush175-sys/MasarifiPro/releases/latest)
+
+> The application is currently distributed directly as an APK and is not published on Google Play.
+
+## Installation
+
+1. Download the latest APK from the Releases page.
+2. Allow installation from unknown sources when prompted by Android.
+3. Install the APK.
+4. Open the application and complete the initial setup.
+
+## Project Structure
+
+- `app/` — Android application source code
+- `functions/` — Backend and synchronization-related functions
+- `docs/` — Project documentation
+- `scripts/` — Development and release scripts
+- `CHANGELOG.md` — Version history and release changes
+
+## Current Status
+
+Masarifi Pro is under active development. New releases, improvements, and bug fixes are published through GitHub Releases.
+
+## Developer
+
+Developed by **Mohammd Aloush**
+
+Junior Android Developer focused on practical mobile applications using Java, Kotlin, Jetpack Compose, Firebase, and Android Studio.
