@@ -19,16 +19,18 @@ Masarifi Pro helps users manage income, expenses, balances, and financial transa
 - Automatic update checking through GitHub Releases
 - Arabic and English interface support
 
-  ## Screenshots
+## Screenshots
 
 <p align="center">
-  <img src="docs/screenshots/home-screen.jpg" width="220" alt="Masarifi Pro home screen">
-  <img src="docs/screenshots/transactions-screen.jpg" width="220" alt="Masarifi Pro transactions screen">
+  <img src="docs/screenshots/home-screen.jpg" width="220" align="top" alt="Masarifi Pro home screen">
+  &nbsp;&nbsp;
+  <img src="docs/screenshots/transactions-screen.jpg" width="220" align="top" alt="Masarifi Pro transactions screen">
 </p>
 
 <p align="center">
-  <img src="docs/screenshots/statistics-screen.jpg" width="220" alt="Masarifi Pro statistics screen">
-  <img src="docs/screenshots/settings-screen.jpg" width="220" alt="Masarifi Pro settings screen">
+  <img src="docs/screenshots/statistics-screen.jpg" width="220" align="top" alt="Masarifi Pro statistics screen">
+  &nbsp;&nbsp;
+  <img src="docs/screenshots/settings-screen.jpg" width="220" align="top" alt="Masarifi Pro settings screen">
 </p>
 
 ## Technologies
