@@ -30,9 +30,15 @@ APKSIGNER="$BUILD_TOOLS/apksigner"
 chmod +x ./gradlew
 ./gradlew clean :app:assembleRelease
 
+VERSION_NAME="$(sed -n 's/^[[:space:]]*versionName[[:space:]]*=[[:space:]]*"\([^"]*\)".*/\1/p' app/build.gradle.kts | head -1)"
+if [[ -z "$VERSION_NAME" ]]; then
+  echo "Could not read versionName from app/build.gradle.kts" >&2
+  exit 1
+fi
+
 UNSIGNED_APK="$ROOT_DIR/app/build/outputs/apk/release/app-release-unsigned.apk"
-ALIGNED_APK="$ROOT_DIR/app/build/outputs/apk/release/MasarifiPro-v1.1.1-aligned.apk"
-SIGNED_APK="$ROOT_DIR/app/build/outputs/apk/release/MasarifiPro-v1.1.1-release-signed.apk"
+ALIGNED_APK="$ROOT_DIR/app/build/outputs/apk/release/MasarifiPro-v${VERSION_NAME}-aligned.apk"
+SIGNED_APK="$ROOT_DIR/app/build/outputs/apk/release/MasarifiPro-v${VERSION_NAME}-release-signed.apk"
 
 [[ -f "$UNSIGNED_APK" ]] || { echo "Unsigned APK not found: $UNSIGNED_APK" >&2; exit 1; }
 

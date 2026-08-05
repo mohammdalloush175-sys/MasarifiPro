@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.masarifipro.activities.UnlockActivity;
+import com.example.masarifipro.updates.AppUpdateManager;
 import com.example.masarifipro.utils.AppLockManager;
 
 public class MyApplication extends Application {
@@ -18,6 +19,9 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        AppUpdateManager.schedulePeriodicChecks(this);
+        AppUpdateManager.enqueueImmediateCheck(this);
 
         registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
             @Override

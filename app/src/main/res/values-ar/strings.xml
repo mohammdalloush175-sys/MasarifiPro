@@ -631,4 +631,41 @@
     <string name="balance_before">الرصيد قبل العملية</string>
     <string name="balance_after">الرصيد بعد العملية</string>
     <string name="transaction_balance_snapshot">قبل: %1$s  •  بعد: %2$s</string>
+
+    <!-- GitHub App Updates -->
+    <string name="app_updates">تحديثات التطبيق</string>
+    <string name="app_updates_subtitle">فحص الإصدارات الجديدة وتنزيلها من GitHub</string>
+    <string name="update_back">رجوع</string>
+    <string name="update_checking">جاري التحقق من أحدث إصدار…</string>
+    <string name="update_check_now">التحقق الآن</string>
+    <string name="update_current_version">الإصدار الحالي</string>
+    <string name="update_current_version_value">الإصدار المثبّت: %1$s</string>
+    <string name="update_latest_version">أحدث إصدار</string>
+    <string name="update_latest_version_value">أحدث إصدار: %1$s</string>
+    <string name="update_not_available_value">أحدث إصدار: غير متوفر بعد</string>
+    <string name="update_published_at_value">تاريخ النشر: %1$s</string>
+    <string name="update_release_notes_title">ملاحظات الإصدار</string>
+    <string name="update_no_release_notes">لا توجد ملاحظات مرفقة بهذا الإصدار.</string>
+    <string name="update_available_status">يتوفر تحديث جديد: %1$s</string>
+    <string name="update_up_to_date">أنت تستخدم أحدث إصدار.</string>
+    <string name="update_no_release_published">لم يُنشر أي إصدار على GitHub بعد.</string>
+    <string name="update_no_release_published_details">أنشئ أول GitHub Release وأرفق به ملف MasarifiPro.apk، ثم أعد التحقق.</string>
+    <string name="update_check_failed">تعذر التحقق من التحديثات.</string>
+    <string name="update_check_failed_details">تحقق من اتصال الإنترنت ثم اضغط «التحقق الآن» مرة أخرى.</string>
+    <string name="update_download_latest">تنزيل أحدث APK</string>
+    <string name="update_open_release_page">فتح صفحة الإصدار</string>
+    <string name="update_open_github_repository">فتح مشروع Masarifi Pro على GitHub</string>
+    <string name="update_apk_not_attached">الإصدار موجود، لكن لم يُرفق به ملف APK. ستُفتح صفحة الإصدار.</string>
+    <string name="update_apk_not_attached_short">ملف APK غير مرفق</string>
+    <string name="update_cannot_open_link">تعذر فتح الرابط.</string>
+    <string name="update_background_checks">فحص التحديثات في الخلفية</string>
+    <string name="update_background_checks_description">يتحقق التطبيق دورياً عند توفر الإنترنت ويرسل إشعاراً عند ظهور إصدار أحدث.</string>
+    <string name="update_background_enabled">تم تفعيل فحص التحديثات في الخلفية.</string>
+    <string name="update_background_disabled">تم إيقاف فحص التحديثات في الخلفية.</string>
+    <string name="update_never_checked">لم يتم التحقق من قبل.</string>
+    <string name="update_last_checked_value">آخر تحقق: %1$s</string>
+    <string name="update_notification_channel">تحديثات مصاريفي برو</string>
+    <string name="update_notification_channel_description">إشعارات توفر إصدارات جديدة من التطبيق</string>
+    <string name="update_available_notification_title">يتوفر تحديث جديد لمصاريفي برو</string>
+    <string name="update_available_notification_body">الإصدار %1$s متاح الآن. اضغط لعرضه وتنزيله.</string>
 </resources>

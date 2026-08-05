@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.2.0 (versionCode 4)
+
+- Added a GitHub-powered app updates screen under Settings.
+- Added manual checking for the latest published GitHub Release.
+- Added direct links to the repository, release page, and attached APK asset.
+- Added periodic background update checks using WorkManager while the app is closed.
+- Added one notification per newly discovered release, with a deep link to the updates screen.
+- Added graceful handling when no GitHub Release or APK asset has been published yet.
+- Updated the release build script to derive APK filenames from `versionName` automatically.
+
 ## 1.1.1 (versionCode 3)
 
 - Fixed transaction rows remaining on “Syncing...” until the main screen was recreated.

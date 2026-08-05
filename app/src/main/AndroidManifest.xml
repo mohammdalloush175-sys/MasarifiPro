@@ -53,6 +53,10 @@
             android:exported="false" />
 
         <activity
+            android:name=".activities.UpdatesActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".activities.SharedAccountActivity"
             android:exported="false" />
 

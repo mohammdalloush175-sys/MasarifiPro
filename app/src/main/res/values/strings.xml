@@ -632,4 +632,41 @@
     <string name="balance_before">Balance before</string>
     <string name="balance_after">Balance after</string>
     <string name="transaction_balance_snapshot">Before: %1$s  •  After: %2$s</string>
+
+    <!-- GitHub App Updates -->
+    <string name="app_updates">App Updates</string>
+    <string name="app_updates_subtitle">Check and download new releases from GitHub</string>
+    <string name="update_back">Back</string>
+    <string name="update_checking">Checking for the latest release…</string>
+    <string name="update_check_now">Check now</string>
+    <string name="update_current_version">Current version</string>
+    <string name="update_current_version_value">Installed version: %1$s</string>
+    <string name="update_latest_version">Latest version</string>
+    <string name="update_latest_version_value">Latest version: %1$s</string>
+    <string name="update_not_available_value">Latest version: not available yet</string>
+    <string name="update_published_at_value">Published: %1$s</string>
+    <string name="update_release_notes_title">Release notes</string>
+    <string name="update_no_release_notes">No release notes were provided.</string>
+    <string name="update_available_status">A new update is available: %1$s</string>
+    <string name="update_up_to_date">You are using the latest version.</string>
+    <string name="update_no_release_published">No GitHub release has been published yet.</string>
+    <string name="update_no_release_published_details">Create the first GitHub Release and attach MasarifiPro.apk, then check again.</string>
+    <string name="update_check_failed">Could not check for updates.</string>
+    <string name="update_check_failed_details">Check your internet connection, then tap Check now again.</string>
+    <string name="update_download_latest">Download latest APK</string>
+    <string name="update_open_release_page">Open release page</string>
+    <string name="update_open_github_repository">Open Masarifi Pro on GitHub</string>
+    <string name="update_apk_not_attached">The release exists, but no APK is attached. The release page will be opened.</string>
+    <string name="update_apk_not_attached_short">APK not attached</string>
+    <string name="update_cannot_open_link">Could not open the link.</string>
+    <string name="update_background_checks">Background update checks</string>
+    <string name="update_background_checks_description">The app checks periodically when internet is available and notifies you about newer releases.</string>
+    <string name="update_background_enabled">Background update checks enabled.</string>
+    <string name="update_background_disabled">Background update checks disabled.</string>
+    <string name="update_never_checked">Never checked.</string>
+    <string name="update_last_checked_value">Last checked: %1$s</string>
+    <string name="update_notification_channel">Masarifi Pro Updates</string>
+    <string name="update_notification_channel_description">Notifications for new Masarifi Pro releases</string>
+    <string name="update_available_notification_title">A new Masarifi Pro update is available</string>
+    <string name="update_available_notification_body">Version %1$s is now available. Tap to view and download it.</string>
 </resources>

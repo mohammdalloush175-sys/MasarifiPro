@@ -156,6 +156,10 @@ public class SettingsActivity extends AppCompatActivity {
             startActivity(new Intent(this, SyncCenterActivity.class));
         });
 
+        findViewById(R.id.btnAppUpdates).setOnClickListener(v -> {
+            startActivity(new Intent(this, UpdatesActivity.class));
+        });
+
         findViewById(R.id.btnAppLock).setOnClickListener(v -> {
             startActivity(new Intent(this, AppLockSettingsActivity.class));
         });
