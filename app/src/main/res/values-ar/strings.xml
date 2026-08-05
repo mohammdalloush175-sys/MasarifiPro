@@ -1,0 +1,634 @@
+<resources>
+    <string name="app_name">مصاريفي برو</string>
+    <string name="home">الرئيسية</string>
+    <string name="expenses">المصاريف</string>
+    <string name="debts">الديون</string>
+    <string name="calendar">التقويم</string>
+    <string name="settings">الإعدادات</string>
+    <string name="statistics">الإحصائيات</string>
+    <string name="reports">التقارير</string>
+    <string name="balance_remaining">الرصيد المتبقي</string>
+    <string name="remaining_balance">الرصيد المتبقي</string>
+    <string name="total_income">إجمالي الدخل</string>
+    <string name="total_expenses">إجمالي المصروفات</string>
+    <string name="latest_transactions">أحدث العمليات</string>
+    <string name="add_transaction">إضافة عملية</string>
+    <string name="edit_transaction">تعديل العملية</string>
+    <string name="income">دخل</string>
+    <string name="expense">مصروف</string>
+    <string name="amount">المبلغ</string>
+    <string name="currency">العملة</string>
+    <string name="category">الفئة</string>
+    <string name="description">الوصف</string>
+    <string name="date">التاريخ</string>
+    <string name="type">النوع</string>
+    <string name="save">حفظ</string>
+    <string name="cancel">إلغاء</string>
+    <string name="delete">حذف</string>
+    <string name="edit">تعديل</string>
+    <string name="language">اللغة</string>
+    <string name="arabic">العربية</string>
+    <string name="english">English</string>
+    <string name="my_account">حسابي</string>
+    <string name="admin_panel">لوحة الإدارة</string>
+    <string name="shared_expenses">المصاريف المشتركة</string>
+    <string name="calendar_reminders">التقويم والتذكيرات</string>
+    <string name="owed_to_me">لي عند الناس</string>
+    <string name="owed_by_me">علي للناس</string>
+    <string name="all">الكل</string>
+    <string name="paid">مدفوع</string>
+    <string name="unpaid">غير مدفوع</string>
+    <string name="partially_paid">مدفوع جزئياً</string>
+    <string name="add_debt">إضافة دين</string>
+    <string name="no_debts">لا توجد ديون حالياً</string>
+    <string name="no_transactions">لا توجد عمليات حالياً</string>
+    <string name="search">بحث</string>
+    <string name="filter">تصفية</string>
+
+    <!-- Other strings -->
+    <string name="main">الرئيسية</string>
+    <string name="transactions">المعاملات</string>
+    <string name="dark_mode">الوضع الداكن</string>
+    <string name="short_syp">عرض الليرة السورية بشكل مختصر</string>
+    <string name="export_data">تصدير البيانات</string>
+    <string name="export_csv">تصدير كملف CSV / Excel</string>
+    <string name="export_pdf">تصدير كملف PDF</string>
+    <string name="logout">تسجيل الخروج</string>
+    <string name="login">تسجيل الدخول</string>
+    <string name="language_changed">تم تغيير اللغة</string>
+    <string name="select_language">اختر اللغة</string>
+    <string name="switch_account">تبديل الحساب</string>
+    <string name="shared_expenses_desc">قسّم مصاريف الطلعات مع أصدقائك</string>
+    <string name="reminders">تذكيرات</string>
+    <string name="no_reminders">لا توجد تذكيرات</string>
+    <string name="add_reminder">إضافة تذكير</string>
+    <string name="category_general">عام</string>
+    <string name="no_expenses">لا توجد مصروفات</string>
+    <string name="no_data">لا توجد بيانات</string>
+    <string name="other">أخرى</string>
+    <string name="delete_debt">حذف الدين</string>
+    <string name="confirm_delete_debt">هل أنت متأكد من حذف هذا الدين؟</string>
+    <string name="partial_payment">دفع جزئي</string>
+    <string name="amount_paid_now">المبلغ المدفوع حالياً</string>
+    <string name="add">إضافة</string>
+    <string name="paid_more_than_total">المبلغ المدفوع أكبر من إجمالي الدين</string>
+    <string name="invalid_number_format">خطأ في تنسيق الرقم</string>
+    <string name="fill_required_fields">يرجى ملء الحقول المطلوبة</string>
+    <string name="amount_must_be_positive">المبلغ يجب أن يكون أكبر من 0</string>
+    <string name="paid_amount_negative">المبلغ المدفوع لا يمكن أن يكون سالباً</string>
+    <string name="debt_saved_success">تم حفظ الدين بنجاح</string>
+    <string name="debt_save_failed">فشل حفظ الدين</string>
+    <string name="enter_valid_numbers">يرجى إدخال أرقام صحيحة</string>
+    <string name="enter_title">يرجى إدخال العنوان</string>
+    <string name="reminder_future_error">يجب أن يكون وقت التذكير في المستقبل</string>
+    <string name="reminder_added">تمت إضافة التذكير</string>
+    <string name="reminder_failed">فشل إضافة التذكير</string>
+    <string name="date_time_label">الموعد</string>
+    <string name="notification_permission_warning">تم حفظ التذكير، ولكن قد لا تظهر التنبيهات بسبب نقص الصلاحيات</string>
+    <string name="hide_balance">إخفاء الرصيد</string>
+    <string name="send_admin_notification">إرسال إشعار عام للمستخدمين</string>
+    <string name="manage_currencies">إدارة العملات</string>
+    <string name="overdue">متأخر</string>
+    <string name="add_debt_hint">اضغط + لإضافة دين جديد</string>
+    <string name="todays_reminders">تذكيرات اليوم</string>
+    <string name="upcoming">القادمة</string>
+    <string name="expired">المنتهية</string>
+    <string name="completed">المكتملة</string>
+    <string name="financial_statistics">الإحصائيات المالية</string>
+    <string name="transaction_count">عدد العمليات</string>
+    <string name="highest_income">أعلى دخل</string>
+    <string name="highest_expense">أعلى مصروف</string>
+    <string name="top_spending_category">أعلى فئة صرف</string>
+    <string name="top_spending_category_label">أعلى فئة صرف</string>
+    <string name="expenses_by_category">المصروفات حسب الفئة</string>
+    <string name="pie_chart_note">يتم عرض الفئات التي نسبتها أكبر من 3%، والباقي ضمن أخرى</string>
+    <string name="income_vs_expenses">الدخل مقابل المصروفات</string>
+    <string name="developer_credit">Developed by Mohammd Alloush</string>
+    <string name="phone_label">الهاتف: 0937956657</string>
+
+    <!-- Add Transaction Strings -->
+    <string name="add_new_transaction">إضافة عملية جديدة</string>
+    <string name="final_amount">المبلغ النهائي</string>
+    <string name="target_currency">العملة (الهدف)</string>
+    <string name="exchange_question">هل هذا الدخل ناتج عن تحويل من عملة أخرى؟</string>
+    <string name="source_currency">العملة المصدر</string>
+    <string name="amount_to_exchange">المبلغ المراد تصريفه</string>
+    <string name="exchange_rate">سعر الصرف</string>
+    <string name="exchange_result_prefix">الناتج: </string>
+    <string name="category_hint">الفئة (مثلاً: طعام، تسوق)</string>
+    <string name="save_transaction">حفظ العملية</string>
+    <string name="select_category">اختر الفئة</string>
+    <string name="select_currency">اختر العملة</string>
+    <string name="amount_required">المبلغ مطلوب</string>
+    <string name="invalid_amount">المبلغ غير صالح</string>
+    <string name="category_required">الفئة مطلوبة</string>
+    <string name="date_required">التاريخ مطلوب</string>
+    <string name="choose_date">اختر التاريخ</string>
+    <string name="choose_time">اختر الوقت</string>
+    <string name="exchange">تصريف عملة</string>
+    <string name="exchange_category">تصريف عملة</string>
+    <string name="rate">سعر الصرف</string>
+    <string name="result">الناتج</string>
+    <string name="exchange_result">ناتج التصريف</string>
+
+    <!-- Login Strings -->
+    <string name="welcome_message">مرحباً بك في مصاريفي برو</string>
+    <string name="login_subtitle">سجل دخولك لإدارة ميزانيتك بسهولة</string>
+    <string name="name">الاسم</string>
+    <string name="email">البريد الإلكتروني</string>
+    <string name="password">كلمة المرور</string>
+    <string name="forgot_password">نسيت كلمة المرور؟</string>
+    <string name="google_sign_in">تسجيل الدخول باستخدام Google</string>
+    <string name="create_new_account">إنشاء حساب جديد</string>
+    <string name="continue_as_guest">المتابعة بدون تسجيل</string>
+
+    <!-- Profile Strings -->
+    <string name="edit_name">تعديل الاسم</string>
+    <string name="change_password">تغيير كلمة المرور</string>
+    <string name="add_password_to_account">إضافة كلمة مرور للحساب</string>
+    <string name="can_login_with_email_password">يمكنك تسجيل الدخول بالبريد وكلمة المرور</string>
+    <string name="switch_google_account">تبديل حساب Google</string>
+    <string name="important_notes">ملاحظات مهمة</string>
+    <string name="profile_notes_desc">إذا كان حسابك مسجلاً عبر Google فقط، فلن يعمل تسجيل الدخول بكلمة مرور عادية حتى تضيف كلمة مرور للحساب. يمكنك إضافة كلمة مرور من زر إضافة كلمة مرور للحساب. التطبيق لا يحفظ كلمات المرور، ويتم التحقق من الحساب عبر Firebase.</string>
+    <string name="loading">تحميل...</string>
+    <string name="name_updated">تم تحديث الاسم</string>
+    <string name="password_updated">تم تحديث كلمة المرور</string>
+    <string name="update_failed">فشل التحديث</string>
+    <string name="guest_user">وضع الزائر</string>
+    <string name="guest_desc">أنت تستخدم التطبيق بدون تسجيل</string>
+    <string name="login_or_register">تسجيل الدخول أو إنشاء حساب</string>
+    <string name="add_password">إضافة كلمة مرور</string>
+    <string name="new_password">كلمة المرور الجديدة</string>
+    <string name="confirm_password">تأكيد كلمة المرور</string>
+    <string name="enter_password">الرجاء إدخال كلمة المرور</string>
+    <string name="password_length_error">كلمة المرور يجب أن تكون 6 أحرف على الأقل</string>
+    <string name="passwords_do_not_match">كلمات المرور غير متطابقة</string>
+    <string name="password_added_success">تم إضافة كلمة مرور للحساب</string>
+    <string name="email_linked_error">هذا البريد مرتبط مسبقاً بطريقة تسجيل أخرى</string>
+    <string name="relogin_google_error">يرجى تسجيل الدخول من جديد عبر Google ثم المحاولة</string>
+    <string name="password_add_failed">فشل إضافة كلمة المرور</string>
+    <string name="switch_account_failed">فشل تبديل الحساب</string>
+    <string name="auth_failed">فشل المصادقة</string>
+    <string name="profile_load_failed">فشل تحميل بيانات الحساب</string>
+    <string name="default_user_name">مستخدم</string>
+    <string name="save_failed">فشل حفظ البيانات</string>
+    <string name="name_empty_error">الاسم لا يمكن أن يكون فارغاً</string>
+    <string name="password_link_sent">تم إرسال رابط تغيير كلمة المرور إلى بريدك</string>
+    <string name="password_link_failed">فشل إرسال رابط تغيير كلمة المرور</string>
+
+    <!-- Missing Strings -->
+    <string name="export_type_title">اختَر نوع التصدير</string>
+    <string name="all_currencies">جميع العملات</string>
+    <string name="current_currency_only">العملة الحالية فقط</string>
+    <string name="export_as_pdf">تصدير كملف PDF</string>
+
+    <string name="add_reminder_title">إضافة تذكير جديد</string>
+    <string name="reminder_title_hint">عنوان التذكير *</string>
+    <string name="reminder_description_hint">الوصف (اختياري)</string>
+    <string name="date_time">الموعد</string>
+    <string name="optional_amount">المبلغ (اختياري)</string>
+    <string name="save_reminder">حفظ التذكير</string>
+
+    <string name="add_debt_title">إضافة دين جديد</string>
+    <string name="person_name">اسم الشخص</string>
+    <string name="debt_type">نوع الدين</string>
+    <string name="paid_amount_optional">المبلغ المدفوع (اختياري)</string>
+    <string name="due_date">موعد الاستحقاق</string>
+    <string name="notes_optional">ملاحظات (اختياري)</string>
+
+    <string name="maintenance_mode">وضع الصيانة</string>
+    <string name="app_update">تحديث التطبيق</string>
+    <string name="user_management">إدارة المستخدمين</string>
+    <string name="send_message">إرسال رسالة</string>
+
+    <string name="guest_mode_warning">أنت تستخدم التطبيق بدون تسجيل. البيانات محفوظة محلياً فقط ولن تتم مزامنتها سحابياً.</string>
+    <string name="ok">حسناً</string>
+    <string name="already_logged_in">أنت مسجل الدخول بهذا الحساب بالفعل</string>
+    <string name="password_label">كلمة المرور</string>
+    <string name="unknown_provider">طريقة دخول غير معروفة</string>
+    <string name="delete_success">تم الحذف بنجاح</string>
+    <string name="delete_error">حدث خطأ أثناء الحذف</string>
+    <string name="login_required_title">تسجيل الدخول مطلوب</string>
+    <string name="shared_expenses_login_msg">ميزة المصاريف المشتركة تحتاج تسجيل الدخول حتى تتمكن من مشاركة البيانات مع الآخرين.</string>
+    <string name="choose_provider">اختر طريقة الدخول</string>
+    <string name="sign_in_google">الدخول عبر Google</string>
+    <string name="sign_in_password">الدخول بكلمة المرور</string>
+    <string name="add_account">إضافة حساب آخر</string>
+    <string name="current_account">الحساب الحالي</string>
+
+    <string name="filter_transactions">تصفية العمليات</string>
+    <string name="transaction_type">نوع العملية</string>
+    <string name="from_date">من تاريخ</string>
+    <string name="to_date">إلى تاريخ</string>
+    <string name="enter_category_name">ادخل اسم الفئة</string>
+    <string name="apply_filter">تطبيق الفلتر</string>
+    <string name="clear_filter">مسح الفلتر</string>
+
+    <!-- CSV Import -->
+    <string name="import_transactions">استيراد العمليات</string>
+    <string name="import_csv_excel">استيراد من ملف CSV</string>
+    <string name="mapping_dialog_title">ربط أعمدة الملف</string>
+    <string name="date_column">عمود التاريخ</string>
+    <string name="type_column">عمود النوع</string>
+    <string name="amount_column">عمود المبلغ</string>
+    <string name="currency_column">عمود العملة</string>
+    <string name="category_column">عمود الفئة</string>
+    <string name="description_column">عمود الوصف</string>
+    <string name="import_all_as">استيراد كل العمليات كـ</string>
+    <string name="default_currency">العملة الافتراضية</string>
+    <string name="select_column">اختر العمود</string>
+    <string name="import_btn">استيراد</string>
+    <string name="import_preview">معاينة الاستيراد</string>
+    <string name="valid_rows">الصفوف الصالحة: %1$d</string>
+    <string name="invalid_rows">الصفوف غير الصالحة: %1$d</string>
+    <string name="import_success">تم استيراد %1$d عملية</string>
+    <string name="import_partial_success">تم استيراد %1$d عملية وتم تجاهل %2$d صف</string>
+    <string name="select_date_amount_error">يرجى اختيار أعمدة التاريخ والمبلغ</string>
+
+    <!-- New Strings -->
+    <string name="transaction_saved">تم حفظ العملية</string>
+    <string name="transaction_updated">تم تحديث العملية</string>
+    <string name="transaction_deleted">تم حذف العملية</string>
+    <string name="transaction_save_failed">فشل حفظ العملية</string>
+    <string name="transaction_update_failed">فشل تحديث العملية</string>
+    <string name="transaction_delete_failed">فشل حذف العملية</string>
+    <string name="debt_updated">تم تحديث الدين</string>
+    <string name="debt_deleted">تم حذف الدين</string>
+    <string name="debt_saved">تم حفظ الدين</string>
+    <string name="reminder_saved">تم حفظ التذكير</string>
+    <string name="reminder_updated">تم تحديث التذكير</string>
+    <string name="reminder_deleted">تم حذف التذكير</string>
+    <string name="reminder_save_failed">فشل حفظ التذكير</string>
+    <string name="import_failed">فشل الاستيراد</string>
+    <string name="invalid_file">الملف غير صالح</string>
+    <string name="no_file_selected">لم يتم اختيار ملف</string>
+    <string name="data_synced">تمت مزامنة البيانات</string>
+    <string name="sync_failed">فشلت المزامنة</string>
+    <string name="saved_locally_sync_failed">تم الحفظ محلياً لكن فشلت المزامنة</string>
+    <string name="confirm_delete">تأكيد الحذف</string>
+    <string name="yes">نعم</string>
+    <string name="no">لا</string>
+
+    <!-- Export Strings -->
+    <string name="export_success">تم حفظ التقرير في مجلد التنزيلات</string>
+    <string name="export_failed">فشل التصدير</string>
+    <string name="report_title">تقرير مصاريفي برو</string>
+    <string name="report_date">تاريخ التقرير</string>
+    <string name="net_balance">صافي الرصيد</string>
+
+    <string name="creating_pdf">جاري إنشاء ملف PDF...</string>
+    <string name="no_transactions_to_export">لا توجد عمليات للتصدير</string>
+    <string name="pdf_export_failed">فشل تصدير PDF</string>
+    <string name="pdf_saved_downloads">تم حفظ ملف PDF في مجلد التنزيلات</string>
+
+    <!-- App Lock Strings -->
+    <string name="app_lock">قفل التطبيق</string>
+    <string name="app_lock_subtitle">حماية التطبيق برمز PIN أو البصمة</string>
+    <string name="enable_app_lock">تفعيل قفل التطبيق</string>
+    <string name="use_biometric_unlock">استخدام البصمة</string>
+    <string name="set_pin">تعيين رمز PIN</string>
+    <string name="change_pin">تغيير رمز PIN</string>
+    <string name="disable_app_lock">تعطيل قفل التطبيق</string>
+    <string name="enter_pin">أدخل رمز PIN</string>
+    <string name="confirm_pin">تأكيد رمز PIN</string>
+    <string name="unlock">فتح القفل</string>
+    <string name="incorrect_pin">رمز غير صحيح</string>
+    <string name="pin_saved">تم حفظ الرمز</string>
+    <string name="pin_mismatch">الرمزان غير متطابقين</string>
+    <string name="biometric_unlock">فتح بالبصمة</string>
+    <string name="biometric_not_available">البصمة غير متاحة</string>
+    <string name="app_locked">التطبيق مقفل</string>
+
+    <!-- Statistics Improvement Strings -->
+    <string name="saving_rate">نسبة التوفير</string>
+    <string name="average_daily_expense">متوسط المصروف اليومي</string>
+    <string name="biggest_expense_category">أعلى فئة صرف</string>
+    <string name="tap_for_details">اضغط لعرض التفاصيل</string>
+    <string name="remaining">المتبقي</string>
+    <string name="tap_category_details">اضغط على فئة لعرض التفاصيل</string>
+    <string name="category_details_format">الفئة: %1$s\nالمبلغ: %2$s\nالنسبة: %3$s\nعدد العمليات: %4$d</string>
+    <string name="total_expenses_center">إجمالي المصروفات\n%1$s</string>
+
+    <string name="filter_today">اليوم</string>
+    <string name="filter_this_week">هذا الأسبوع</string>
+    <string name="filter_this_month">هذا الشهر</string>
+    <string name="filter_this_year">هذا العام</string>
+    <string name="filter_custom">فترة مخصصة</string>
+    <string name="most_spending_day">أكثر يوم صرفاً</string>
+    <string name="income_expense_diff">الفرق بين الدخل والمصروف</string>
+    <string name="no_data_stats_msg">لا توجد بيانات كافية لعرض الإحصائيات</string>
+    <string name="add_transaction_now">إضافة عملية</string>
+
+    <string name="difference">الفرق</string>
+    <string name="financial_status">الحالة المالية</string>
+    <string name="status_excellent">ممتاز</string>
+    <string name="status_good">جيد</string>
+    <string name="status_warning">انتبه: مصروفاتك قريبة من دخلك</string>
+    <string name="expenses_exceeded_income">المصروفات تجاوزت الدخل!</string>
+    <string name="income_expense_trend">تطور الدخل والمصروف</string>
+    <string name="saved_from_income">وفرت %s من دخلك</string>
+
+    <!-- Sync Status Strings -->
+    <string name="sync_status_synced">✓ تمت المزامنة</string>
+    <string name="sync_status_syncing">⏳ جاري المزامنة...</string>
+    <string name="sync_status_pending">⏳ بانتظار المزامنة</string>
+    <string name="sync_status_failed">❌ فشل المزامنة</string>
+    <string name="sync_started">بدأت المزامنة...</string>
+    <string name="pending_sync">المزامنة المعلقة</string>
+    <string name="sync_now">زامن الآن</string>
+    <string name="no_pending_sync">لا توجد عمليات معلقة</string>
+    <string name="default_web_client_id" translatable="false">354033258819-p9o36gkjbd9fpvp2r65qk74175bnt73b.apps.googleusercontent.com</string>
+
+    <!-- Filter Improvement Strings -->
+    <string name="select_or_search_category">اختر أو ابحث عن فئة</string>
+    <string name="amount_range">نطاق المبلغ</string>
+    <string name="from_amount">من مبلغ</string>
+    <string name="to_amount">إلى مبلغ</string>
+    <string name="enter_amount">أدخل المبلغ</string>
+    <string name="amount_range_error">تأكد من نطاق المبلغ</string>
+    <string name="no_matching_results">لا توجد نتائج مطابقة للفلتر</string>
+
+    <!-- New Export Strings -->
+    <string name="sync_status">حالة المزامنة</string>
+    <string name="created_at">تاريخ الإنشاء</string>
+    <string name="period">الفترة</string>
+    <string name="page">صفحة</string>
+    <string name="share">مشاركة</string>
+    <string name="open_file">فتح الملف</string>
+    <string name="all_types">كل الأنواع</string>
+    <string name="income_only">دخل فقط</string>
+    <string name="expense_only">مصروف فقط</string>
+    <string name="export_options">خيارات التصدير</string>
+    <string name="export_csv_only">تصدير CSV</string>
+    <string name="export_excel_only">تصدير Excel</string>
+    <string name="excel_unavailable">تصدير Excel غير متاح حالياً</string>
+
+    <!-- Sync Center Strings -->
+    <string name="sync_center">حالة المزامنة</string>
+    <string name="synced_transactions">العمليات المتزامنة</string>
+    <string name="pending_transactions">العمليات بانتظار المزامنة</string>
+    <string name="failed_transactions">العمليات الفاشلة</string>
+    <string name="synced_groups">المجموعات المتزامنة</string>
+    <string name="pending_groups">المجموعات بانتظار المزامنة</string>
+    <string name="failed_groups">المجموعات الفاشلة</string>
+    <string name="local_groups">مجموعات محلية فقط</string>
+    <string name="retry_sync">إعادة محاولة المزامنة</string>
+    <string name="sync_attempted">تمت محاولة المزامنة</string>
+    <string name="no_items_to_sync">لا توجد عناصر بحاجة إلى مزامنة</string>
+    <string name="guest_mode_sync_msg">أنت تستخدم التطبيق كضيف، البيانات محفوظة محلياً فقط.</string>
+    <string name="connected">متصل بالإنترنت</string>
+    <string name="disconnected">غير متصل بالإنترنت</string>
+    <string name="no_internet">لا يوجد اتصال بالإنترنت</string>
+    <string name="transactions_need_sync">عمليات بحاجة للمزامنة</string>
+    <string name="groups_need_sync">مجموعات بحاجة للمزامنة</string>
+    <string name="local_only">محفوظة محلياً فقط</string>
+
+    <!-- Shared Expenses Strings -->
+    <string name="se_shared_expenses">المصاريف المشتركة</string>
+    <string name="se_back">رجوع</string>
+    <string name="se_guest_note">أنت تستخدم المصاريف المشتركة بدون تسجيل. هذه المجموعات محفوظة على هذا الجهاز فقط.</string>
+    <string name="se_guest_mode_note">وضع الضيف: المجموعات محفوظة على هذا الجهاز فقط ولن تتم مزامنتها.</string>
+    <string name="se_create_group">إنشاء مجموعة</string>
+    <string name="se_create_local_group">إنشاء مجموعة محلية</string>
+    <string name="se_join_with_code">انضمام بكود</string>
+    <string name="se_no_groups_yet">لا توجد مجموعات مشتركة بعد</string>
+    <string name="se_join_requires_login">الانضمام لمجموعة أونلاين يحتاج تسجيل الدخول.</string>
+
+    <string name="se_group_details">تفاصيل المجموعة</string>
+    <string name="se_group_name">اسم المجموعة</string>
+    <string name="se_edit_group_name">تعديل اسم المجموعة</string>
+    <string name="se_copy_code">نسخ الكود</string>
+    <string name="se_share_code">مشاركة الكود</string>
+    <string name="se_delete_or_leave">حذف أو مغادرة</string>
+    <string name="se_total_expenses">إجمالي المصاريف</string>
+    <string name="se_your_share">حصتك</string>
+    <string name="se_you_paid">ما دفعته</string>
+    <string name="se_net">الصافي</string>
+    <string name="se_net_hint">الصافي يحدد ما إذا كان لك مبلغ أو عليك دفعه</string>
+    <string name="se_add_expense">إضافة مصروف</string>
+    <string name="se_settlement">تسوية الحساب</string>
+    <string name="se_members_count">الأعضاء (%1$d)</string>
+    <string name="se_add_person">إضافة شخص</string>
+    <string name="se_expenses_count">المصاريف (%1$d)</string>
+    <string name="se_filter">تصفية</string>
+    <string name="se_filter_applied">تم تطبيق فلتر على قائمة المصاريف</string>
+    <string name="se_no_expenses_yet">لا توجد مصاريف بعد</string>
+    <string name="se_add_first_expense_hint">ابدأ بإضافة أول مصروف للمجموعة</string>
+    <string name="se_no_expenses_match_filter">لا توجد مصاريف مطابقة لخيارات التصفية</string>
+
+    <string name="se_add_new_expense">إضافة مصروف جديد</string>
+    <string name="se_expense_title_hint">العنوان، مثلاً: عشاء</string>
+    <string name="se_amount">المبلغ</string>
+    <string name="se_paid_by">دفع بواسطة</string>
+    <string name="se_paid_by_format">دفع بواسطة: %1$s</string>
+    <string name="se_note_optional">ملاحظات اختياري</string>
+    <string name="se_note_format">ملاحظة: %1$s</string>
+    <string name="se_save">حفظ</string>
+
+    <string name="se_create_new_group">إنشاء مجموعة جديدة</string>
+    <string name="se_group_name_hint">اسم المجموعة، مثلاً: رحلة بيروت</string>
+    <string name="se_currency">العملة</string>
+    <string name="se_create">إنشاء</string>
+    <string name="se_new_group_name_hint">اسم المجموعة الجديد</string>
+    <string name="se_join_group">انضمام إلى مجموعة</string>
+    <string name="se_invite_code_hint">كود الدعوة، مثلاً: TRIP-1234</string>
+    <string name="se_join">انضمام</string>
+
+    <string name="se_filter_expenses">فلترة المصاريف</string>
+    <string name="se_search_by_title">البحث بالعنوان</string>
+    <string name="se_search_hint">ابحث...</string>
+    <string name="se_min_amount">الحد الأدنى</string>
+    <string name="se_max_amount">الحد الأقصى</string>
+    <string name="se_date">التاريخ</string>
+    <string name="se_from_date">من تاريخ</string>
+    <string name="se_to_date">إلى تاريخ</string>
+    <string name="se_clear_filter">مسح الفلتر</string>
+    <string name="se_apply">تطبيق</string>
+
+    <string name="se_settlement_results">نتائج التسوية</string>
+    <string name="se_no_settlements_now">لا توجد تسويات حالياً</string>
+    <string name="se_settlement_note">هذه الحسابات تقريبية لتسهيل توزيع المبالغ بين الأعضاء.</string>
+    <string name="se_settlement_who_pays_whom">التسوية، من يدفع لمن؟</string>
+    <string name="se_everyone_settled">الجميع متعادلون!</string>
+    <string name="se_pays">يدفع</string>
+    <string name="se_to">إلى</string>
+    <string name="se_ok">حسناً</string>
+
+    <string name="se_delete_group">حذف المجموعة</string>
+    <string name="se_leave_group">مغادرة المجموعة</string>
+    <string name="se_delete">حذف</string>
+    <string name="se_cancel">إلغاء</string>
+    <string name="se_leave">مغادرة</string>
+    <string name="se_delete_local_group_confirm">سيتم حذف هذه المجموعة المحلية من هذا الجهاز فقط. هل أنت متأكد؟</string>
+    <string name="se_delete_group_confirm">سيتم حذف هذه المجموعة وجميع مصاريفها وأعضائها نهائياً. هل أنت متأكد؟</string>
+    <string name="se_leave_group_confirm">سيتم حذف المجموعة من قائمتك فقط ولن يتم حذفها عند باقي الأعضاء.</string>
+    <string name="se_local_group_deleted">تم حذف المجموعة محلياً</string>
+    <string name="se_group_deleted">تم حذف المجموعة</string>
+    <string name="se_leave_group_success">تمت مغادرة المجموعة</string>
+    <string name="se_delete_group_failed">فشل حذف المجموعة</string>
+    <string name="se_leave_group_failed">فشل مغادرة المجموعة</string>
+
+    <string name="se_you">أنت</string>
+    <string name="se_user">مستخدم</string>
+    <string name="se_offline">أوفلاين</string>
+    <string name="se_online">متصل</string>
+    <string name="se_guest_mode_local">وضع الضيف محلي</string>
+
+    <string name="se_name_required">الاسم مطلوب</string>
+    <string name="se_group_name_required">يرجى إدخال اسم المجموعة</string>
+    <string name="se_person_name_required">يرجى إدخال اسم الشخص</string>
+    <string name="se_code_required">الكود مطلوب</string>
+    <string name="se_group_name_updated">تم تعديل اسم المجموعة</string>
+    <string name="se_group_name_update_failed">فشل تعديل الاسم</string>
+    <string name="se_person_added">تمت إضافة الشخص</string>
+    <string name="se_person_add_failed">فشل إضافة الشخص</string>
+    <string name="se_group_created_locally">تم إنشاء المجموعة محلياً</string>
+    <string name="se_group_saved_locally_syncing">تم حفظ المجموعة محلياً وستتم مزامنتها لاحقاً</string>
+    <string name="se_group_not_found">لم يتم العثور على المجموعة</string>
+    <string name="se_joined_group_success">تم الانضمام إلى المجموعة</string>
+    <string name="se_join_group_failed_check_internet">فشل الانضمام، تأكد من اتصال الإنترنت.</string>
+    <string name="se_invite_code_copied">تم نسخ كود الدعوة</string>
+
+    <string name="se_delete_person">حذف الشخص</string>
+    <string name="se_delete_person_confirm">سيتم حذف هذا الشخص من المجموعة. هل أنت متأكد؟</string>
+    <string name="se_cannot_delete_person_has_expenses">لا يمكن حذف الشخص لأنه لديه مصاريف مسجلة</string>
+    <string name="se_person_deleted">تم حذف الشخص</string>
+    <string name="se_person_delete_failed">فشل حذف الشخص</string>
+
+    <string name="se_you_will_receive_amount">لك مبلغ %1$s لتستلمه من بقية الأعضاء.</string>
+    <string name="se_you_should_pay_amount">عليك دفع %1$s لتسوية حصتك.</string>
+    <string name="se_your_share_fully_settled">حصتك مسواة بالكامل، لا يوجد مبالغ متبقية.</string>
+
+    <string name="se_fill_required_fields">يرجى ملء جميع الحقول المطلوبة</string>
+    <string name="se_amount_must_be_greater_than_zero">المبلغ يجب أن يكون أكبر من صفر</string>
+    <string name="se_invalid_amount">مبلغ غير صالح</string>
+    <string name="se_expense_added">تمت إضافة المصروف</string>
+    <string name="se_expense_add_failed">فشل إضافة المصروف</string>
+    <string name="se_all">الكل</string>
+
+    <string name="se_invite_share_text">انضم إلى مجموعتي في تطبيق مصاريفي برو\nاسم المجموعة: %1$s\nكود الدعوة: %2$s\nرابط مباشر: %3$s</string>
+    <string name="se_share_invite_via">مشاركة الدعوة عبر:</string>
+
+    <string name="se_invite_code_format">الكود: %1$s</string>
+    <string name="se_creation_date_format">تاريخ الإنشاء: %1$s</string>
+    <string name="se_members_plain_count">%1$d أعضاء</string>
+    <string name="se_sample_trip_name">رحلة المصيف</string>
+    <string name="se_sample_invite_code">الكود: TRIP-1234</string>
+    <string name="se_sample_creation_date">تاريخ الإنشاء: 2023/10/27</string>
+    <string name="se_total_expenses_colon">إجمالي المصاريف:</string>
+    <string name="se_expense_title_sample">عنوان المصروف</string>
+    <string name="se_sample_paid_by">دفع بواسطة: محمد</string>
+    <string name="se_sample_note">ملاحظة: ...</string>
+    <string name="se_member_initial_sample">م</string>
+    <string name="se_member_name_sample">اسم العضو</string>
+
+    <!-- Category Management Strings -->
+    <string name="cm_manage_categories">إدارة الفئات</string>
+    <string name="cm_manage_categories_subtitle">إضافة وتعديل وتنظيم فئات الدخل والمصاريف</string>
+    <string name="cm_add_category">إضافة فئة</string>
+    <string name="cm_edit_category">تعديل الفئة</string>
+    <string name="cm_delete_category">حذف الفئة</string>
+    <string name="cm_category_name">اسم الفئة</string>
+    <string name="cm_category_name_hint">أدخل اسم الفئة</string>
+    <string name="cm_category_type">نوع الفئة</string>
+    <string name="cm_category_currency">العملة</string>
+    <string name="cm_income">دخل</string>
+    <string name="cm_expense">مصروف</string>
+    <string name="cm_all">الكل</string>
+    <string name="cm_all_types">الكل</string>
+    <string name="cm_all_currencies">جميع العملات</string>
+    <string name="cm_save">حفظ</string>
+    <string name="cm_cancel">إلغاء</string>
+    <string name="cm_delete">حذف</string>
+    <string name="cm_no_categories">لا توجد فئات بعد</string>
+    <string name="cm_name_required">اسم الفئة مطلوب</string>
+    <string name="cm_category_added">تمت إضافة الفئة</string>
+    <string name="cm_category_updated">تم تعديل الفئة</string>
+    <string name="cm_category_deleted">تم حذف الفئة</string>
+    <string name="cm_duplicate_category">هذه الفئة موجودة مسبقاً</string>
+    <string name="cm_delete_category_message">هل أنت متأكد من حذف هذه الفئة؟</string>
+    <string name="cm_category_used_cannot_delete">لا يمكن حذف هذه الفئة لأنها مستخدمة في عمليات سابقة</string>
+    <string name="cm_operation_failed">فشلت العملية</string>
+    <string name="cm_default_categories_added">تمت إضافة الفئات الافتراضية</string>
+
+    <!-- Monthly Budget Strings -->
+    <string name="mb_monthly_budget">الميزانية الشهرية</string>
+    <string name="mb_monthly_budget_subtitle">حدد حد الإنفاق الشهري لكل عملة</string>
+    <string name="mb_select_month">اختر الشهر</string>
+    <string name="mb_select_year">اختر السنة</string>
+    <string name="mb_select_currency">اختر العملة</string>
+    <string name="mb_budget_amount">قيمة الميزانية</string>
+    <string name="mb_save_budget">حفظ الميزانية</string>
+    <string name="mb_budget">الميزانية</string>
+    <string name="mb_spent">المصروف</string>
+    <string name="mb_remaining">المتبقي</string>
+    <string name="mb_usage">الاستهلاك</string>
+    <string name="mb_no_budget_set">لا توجد ميزانية محددة لهذا الشهر</string>
+    <string name="mb_budget_saved">تم حفظ الميزانية</string>
+    <string name="mb_invalid_amount">يرجى إدخال مبلغ صحيح</string>
+    <string name="mb_over_budget_warning">لقد تجاوزت الميزانية الشهرية المحددة</string>
+    <string name="mb_close_to_limit_warning">أنت قريب من حد الميزانية الشهرية</string>
+    <string name="mb_operation_failed">فشلت العملية</string>
+    <string name="mb_month_1">كانون الثاني</string>
+    <string name="mb_month_2">شباط</string>
+    <string name="mb_month_3">آذار</string>
+    <string name="mb_month_4">نيسان</string>
+    <string name="mb_month_5">أيار</string>
+    <string name="mb_month_6">حزيران</string>
+    <string name="mb_month_7">تموز</string>
+    <string name="mb_month_8">آب</string>
+    <string name="mb_month_9">أيلول</string>
+    <string name="mb_month_10">تشرين الأول</string>
+    <string name="mb_month_11">تشرين الثاني</string>
+    <string name="mb_month_12">كانون الأول</string>
+
+    <string name="mb_daily_allowance">المسموح يومياً لباقي الشهر: %1$s</string>
+    <string name="mb_no_remaining_daily_allowance">لا يوجد مبلغ متبقٍ لهذا الشهر</string>
+    <string name="mb_budget_status_normal">أنت ضمن الميزانية الشهرية</string>
+    <string name="mb_budget_alerts">تنبيهات الميزانية</string>
+    <string name="mb_budget_alerts_description">إرسال إشعار عند تجاوز الميزانية الشهرية</string>
+    <string name="mb_notification_channel_name">تنبيهات الميزانية</string>
+    <string name="mb_notification_exceeded_title">تم تخطي الميزانية</string>
+    <string name="mb_notification_exceeded_body">لقد تجاوزت ميزانية هذا الشهر لعملة %1$s. الميزانية: %2$s، المصروف: %3$s</string>
+
+    <string name="mb_select_category">اختر الفئة</string>
+    <string name="mb_all_categories">كل الفئات</string>
+    <string name="mb_budget_category">الفئة: %1$s</string>
+    <string name="mb_enable_notifications_permission">اسمح بالإشعارات لتلقي تنبيهات الميزانية</string>
+    <string name="mb_notification_exceeded_body_category">لقد تجاوزت ميزانية هذا الشهر لعملة %1$s ضمن فئة %2$s. الميزانية: %3$s، المصروف: %4$s</string>
+
+    <!-- QR Code Strings -->
+    <string name="qr_scan_code">مسح QR بالكاميرا</string>
+    <string name="qr_scan_prompt">امسح رمز QR الخاص بالمجموعة</string>
+    <string name="qr_code_read_success">تمت قراءة كود الدعوة</string>
+    <string name="qr_code_read_cancelled">لم يتم قراءة أي كود</string>
+    <string name="qr_invalid_code">رمز QR غير صالح</string>
+    <string name="qr_show_group_code">عرض رمز QR</string>
+    <string name="qr_group_code_title">رمز QR للمجموعة</string>
+    <string name="qr_close">إإغلاق</string>
+    <string name="qr_no_invite_code">لا يوجد كود دعوة لهذه المجموعة</string>
+    <string name="qr_camera_permission_required">يجب السماح للكاميرا لمسح رموز QR</string>
+
+    <!-- New Hints -->
+    <string name="hint_home">أضف دخلك ومصاريفك اليومية لتتبع أموالك بسهولة.</string>
+    <string name="hint_statistics">تابع أين تصرف أكثر، واعرف معدل صرفك اليومي.</string>
+    <string name="hint_monthly_budget">حدد حد الإنفاق الشهري، وسيتم تنبيهك عند الاقتراب أو التجاوز.</string>
+    <string name="hint_shared_expenses">قسّم المصاريف مع الأصدقاء، والتطبيق يحسب من يدفع لمن.</string>
+    <string name="hint_category_management">نظّم فئاتك مثل طعام، مواصلات، فواتير لتسهيل إضافة العمليات.</string>
+    <string name="hint_currency_management">اختر العملات التي تريد استخدامها داخل التطبيق.</string>
+    <string name="got_it">فهمت</string>
+
+    <string name="delete_all_categories">حذف جميع الفئات</string>
+    <string name="delete_all_categories_confirm">هل أنت متأكد من حذف جميع الفئات؟ لن يتم حذف العمليات السابقة.</string>
+
+    <string name="delete_displayed_categories">حذف الفئات المعروضة</string>
+    <string name="delete_categories_used_title">فئات مستخدمة في عمليات</string>
+    <string name="delete_categories_used_message">بعض الفئات مستخدمة في عمليات سابقة. هل تريد حذفها من قائمة الفئات فقط؟ العمليات السابقة لن تُحذف.</string>
+    <string name="delete_used_yes">نعم، احذفها من الفئات</string>
+    <string name="delete_used_no">لا، اترك المستخدمة</string>
+    <string name="delete_cancel">إلغاء</string>
+    <string name="categories_deleted">تم حذف الفئات المحددة</string>
+    <string name="balance_before">الرصيد قبل العملية</string>
+    <string name="balance_after">الرصيد بعد العملية</string>
+    <string name="transaction_balance_snapshot">قبل: %1$s  •  بعد: %2$s</string>
+</resources>

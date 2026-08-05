@@ -1,0 +1,48 @@
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# Generated Android artifacts
+**/build/
+*.apk
+*.aab
+
+# Local dependency/build caches
+functions/node_modules/
+
+# Signing credentials must never be committed
+*.jks
+*.keystore
+key.properties
+
+# Signing keys and secrets
+*.jks
+*.keystore
+*.p12
+*.pem
+
+# Local Android configuration
+local.properties
+
+# Android/Gradle build outputs
+.gradle/
+**/build/
+*.apk
+*.aab
+
+# IDE and OS files
+.idea/
+*.iml
+.DS_Store

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="gray">#808080</color>
+    <color name="light_gray">#F5F5F5</color>
+
+    <color name="background">#FFFFFF</color>
+    <color name="onBackground">#000000</color>
+    <color name="surface">#F5F5F5</color>
+    <color name="onSurface">#000000</color>
+    <color name="cardBackground">#FFFFFF</color>
+
+    <!-- Statistics Colors -->
+    <color name="stats_bg">#F8F9FA</color>
+    <color name="stats_card_bg">#FFFFFF</color>
+    <color name="stats_text_primary">#212121</color>
+    <color name="stats_text_secondary">#666666</color>
+    <color name="stats_purple">#6200EE</color>
+    <color name="stats_income">#4CAF50</color>
+    <color name="stats_expense">#F44336</color>
+    <color name="stats_chip_selected_bg">#6200EE</color>
+    <color name="stats_chip_selected_text">#FFFFFF</color>
+    <color name="stats_chip_unselected_bg">#FFFFFF</color>
+    <color name="stats_chip_unselected_text">#666666</color>
+    <color name="stats_info_bg">#F3E5F5</color>
+    <color name="stats_chart_label">#333333</color>
+    <color name="stats_chart_grid">#EEEEEE</color>
+
+    <!-- Shared Trip Details Colors -->
+    <color name="shared_details_bg">#F8F9FA</color>
+    <color name="shared_details_header_bg">#6200EE</color>
+    <color name="shared_details_header_text">#FFFFFF</color>
+    <color name="shared_details_invite_bg">#33FFFFFF</color>
+    <color name="shared_details_card_bg">#FFFFFF</color>
+    <color name="shared_details_text_primary">#212121</color>
+    <color name="shared_details_text_secondary">#757575</color>
+    <color name="shared_details_card_stroke">#EEEEEE</color>
+    <color name="shared_details_net_hint">#757575</color>
+    <color name="shared_details_divider">#F5F5F5</color>
+    <color name="shared_details_note_bg">#F9F9F9</color>
+    <color name="shared_details_button_primary">#6200EE</color>
+    <color name="shared_details_button_text">#FFFFFF</color>
+    <color name="shared_details_outline">#6200EE</color>
+    <color name="shared_details_income">#4CAF50</color>
+    <color name="shared_details_expense">#F44336</color>
+</resources>

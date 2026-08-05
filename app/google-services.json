@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "354033258819",
+    "project_id": "masarifipro-ebd6c",
+    "storage_bucket": "masarifipro-ebd6c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:354033258819:android:c92d0e1cfdc0eda2f21ff6",
+        "android_client_info": {
+          "package_name": "com.example.masarifipro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "354033258819-1da95d8loqaq5tu6p7iarkqt42fc5sll.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.masarifipro",
+            "certificate_hash": "d59bc1640a6f89547be7094c180e6cd16337c592"
+          }
+        },
+        {
+          "client_id": "354033258819-sg2rihvbp4ju3dbgvnhu49b8e5ciobon.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.masarifipro",
+            "certificate_hash": "8700eff16f9a165c58e71c0f7784789c478da4d1"
+          }
+        },
+        {
+          "client_id": "354033258819-p9o36gkjbd9fpvp2r65qk74175bnt73b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGgrRPi6YBLSfLVQuG8lmwjyo5eq4FKts"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "354033258819-p9o36gkjbd9fpvp2r65qk74175bnt73b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

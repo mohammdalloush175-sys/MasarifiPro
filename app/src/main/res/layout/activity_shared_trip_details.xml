@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/shared_details_bg"
+    tools:context=".activities.SharedTripDetailsActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:elevation="0dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            android:paddingTop="32dp"
+            android:background="@color/shared_details_header_bg"
+            app:title="@string/se_group_details"
+            app:titleTextColor="@color/shared_details_header_text"
+            app:navigationIcon="@drawable/abc_ic_ab_back_material"
+            app:navigationIconTint="@color/shared_details_header_text" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:background="@color/shared_details_header_bg">
+
+            <TextView
+                android:id="@+id/tvHeaderTripName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/se_group_name"
+                android:textColor="@color/shared_details_header_text"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="12dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="16dp"
+                    app:cardBackgroundColor="@color/shared_details_invite_bg"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="0dp">
+                    <TextView
+                        android:id="@+id/tvInviteCode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="12dp"
+                        android:paddingVertical="4dp"
+                        android:text="@string/se_sample_invite_code"
+                        android:textColor="@color/shared_details_header_text"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <ImageButton
+                    android:id="@+id/btnEditTripName"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@android:drawable/ic_menu_edit"
+                    android:contentDescription="@string/se_edit_group_name"
+                    android:visibility="gone"
+                    app:tint="@color/shared_details_header_text" />
+
+                <ImageButton
+                    android:id="@+id/btnCopyCode"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_marginHorizontal="4dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@android:drawable/ic_menu_save"
+                    android:contentDescription="@string/se_copy_code"
+                    app:tint="@color/shared_details_header_text" />
+
+                <ImageButton
+                    android:id="@+id/btnShowQr"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_marginHorizontal="4dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_qr_code"
+                    android:contentDescription="@string/qr_show_group_code"
+                    app:tint="@color/shared_details_header_text" />
+
+                <ImageButton
+                    android:id="@+id/btnShareCode"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_marginHorizontal="4dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@android:drawable/ic_menu_share"
+                    android:contentDescription="@string/se_share_code"
+                    app:tint="@color/shared_details_header_text" />
+
+                <ImageButton
+                    android:id="@+id/btnDeleteLeave"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@android:drawable/ic_menu_delete"
+                    android:contentDescription="@string/se_delete_or_leave"
+                    app:tint="@color/shared_details_header_text" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="80dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Summary Cards -->
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:alignmentMode="alignMargins"
+                android:columnOrderPreserved="false">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="6dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardBackgroundColor="@color/shared_details_card_bg"
+                    app:cardElevation="2dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="@color/shared_details_card_stroke">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:gravity="center">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se_total_expenses"
+                            android:textColor="@color/shared_details_text_secondary"
+                            android:textSize="12sp" />
+                        <TextView
+                            android:id="@+id/tvTotalExpenses"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="0.00"
+                            android:textStyle="bold"
+                            android:textColor="@color/shared_details_button_primary"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="6dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardBackgroundColor="@color/shared_details_card_bg"
+                    app:cardElevation="2dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="@color/shared_details_card_stroke">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:gravity="center">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se_your_share"
+                            android:textColor="@color/shared_details_text_secondary"
+                            android:textSize="12sp" />
+                        <TextView
+                            android:id="@+id/tvYourShare"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="0.00"
+                            android:textStyle="bold"
+                            android:textColor="@color/shared_details_text_primary"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="6dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardBackgroundColor="@color/shared_details_card_bg"
+                    app:cardElevation="2dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="@color/shared_details_card_stroke">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:gravity="center">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se_you_paid"
+                            android:textColor="@color/shared_details_text_secondary"
+                            android:textSize="12sp" />
+                        <TextView
+                            android:id="@+id/tvYourPaid"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="0.00"
+                            android:textStyle="bold"
+                            android:textColor="#4CAF50"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="6dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardBackgroundColor="@color/shared_details_card_bg"
+                    app:cardElevation="2dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="@color/shared_details_card_stroke">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:gravity="center">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se_net"
+                            android:textColor="@color/shared_details_text_secondary"
+                            android:textSize="12sp" />
+                        <TextView
+                            android:id="@+id/tvYourNet"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="0.00"
+                            android:textStyle="bold"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </GridLayout>
+
+            <TextView
+                android:id="@+id/tvNetInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginHorizontal="12dp"
+                android:text="@string/se_net_hint"
+                android:textSize="12sp"
+                android:textColor="@color/shared_details_net_hint"
+                android:gravity="center" />
+
+            <!-- Action Buttons -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="8dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnAddExpense"
+                    style="@style/Widget.MaterialComponents.Button"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_weight="1.2"
+                    android:layout_marginEnd="12dp"
+                    android:text="@string/se_add_expense"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/shared_details_button_text"
+                    app:backgroundTint="@color/shared_details_button_primary"
+                    app:cornerRadius="12dp"
+                    app:icon="@android:drawable/ic_input_add"
+                    app:iconTint="@color/shared_details_button_text"
+                    app:iconGravity="textStart" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSettle"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_weight="0.8"
+                    android:text="@string/se_settlement"
+                    android:textSize="14sp"
+                    android:textColor="@color/shared_details_outline"
+                    app:cornerRadius="12dp"
+                    app:strokeColor="@color/shared_details_outline"
+                    app:icon="@android:drawable/ic_popup_sync"
+                    app:iconTint="@color/shared_details_outline"
+                    app:iconGravity="textStart" />
+            </LinearLayout>
+
+            <!-- Members Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="24dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tvMembersTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/se_member_name_sample"
+                    android:textStyle="bold"
+                    android:textColor="@color/shared_details_text_primary"
+                    android:textSize="18sp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnAddMember"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/se_add_person"
+                    android:textColor="@color/shared_details_outline"
+                    app:icon="@android:drawable/ic_menu_add"
+                    app:iconTint="@color/shared_details_outline" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvMembers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:nestedScrollingEnabled="false"
+                tools:listitem="@layout/item_shared_trip_member" />
+
+            <!-- Expenses Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="24dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tvExpensesTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/se_expenses_count"
+                    android:textStyle="bold"
+                    android:textColor="@color/shared_details_text_primary"
+                    android:textSize="18sp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnFilter"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/se_filter"
+                    android:textColor="@color/shared_details_text_secondary"
+                    app:icon="@android:drawable/ic_menu_search"
+                    app:iconTint="@color/shared_details_text_secondary" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvFilterStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/se_filter_applied"
+                android:textColor="@color/shared_details_outline"
+                android:textSize="12sp"
+                android:visibility="gone"
+                android:layout_marginTop="4dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvExpenses"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:nestedScrollingEnabled="false"
+                tools:listitem="@layout/item_shared_expense" />
+
+            <LinearLayout
+                android:id="@+id/layoutEmptyExpenses"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="32dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@android:drawable/ic_menu_agenda"
+                    app:tint="@color/shared_details_text_secondary"
+                    android:alpha="0.3" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/se_no_expenses_yet"
+                    android:textColor="@color/shared_details_text_secondary"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/se_add_first_expense_hint"
+                    android:textColor="@color/shared_details_text_secondary"
+                    android:alpha="0.7"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvNoExpenses"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/se_no_expenses_match_filter"
+                android:gravity="center"
+                android:layout_marginTop="32dp"
+                android:visibility="gone"
+                android:textColor="@color/shared_details_text_secondary"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

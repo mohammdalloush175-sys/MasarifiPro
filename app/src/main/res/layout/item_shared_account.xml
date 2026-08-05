@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="4dp"
+    android:layout_marginHorizontal="2dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp"
+    android:layoutDirection="rtl">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@android:drawable/ic_menu_share"
+            app:tint="@color/purple_500" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvAccountName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="اسم الحساب"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tvInviteCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="كود الدعوة: ABCDEF"
+                android:textSize="12sp"
+                android:textColor="@color/gray" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvRole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="مالك"
+            android:textSize="12sp"
+            android:textColor="@color/teal_700"
+            android:background="@drawable/bg_role_tag"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="2dp" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

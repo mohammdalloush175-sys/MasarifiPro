@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background">#121212</color>
+    <color name="onBackground">#FFFFFF</color>
+    <color name="surface">#1E1E1E</color>
+    <color name="onSurface">#FFFFFF</color>
+    <color name="cardBackground">#2C2C2C</color>
+
+    <!-- Statistics Colors Dark Mode -->
+    <color name="stats_bg">#121212</color>
+    <color name="stats_card_bg">#1E1E1E</color>
+    <color name="stats_text_primary">#F5F5F5</color>
+    <color name="stats_text_secondary">#BDBDBD</color>
+    <color name="stats_purple">#BB86FC</color>
+    <color name="stats_income">#81C784</color>
+    <color name="stats_expense">#E57373</color>
+    <color name="stats_chip_selected_bg">#BB86FC</color>
+    <color name="stats_chip_selected_text">#000000</color>
+    <color name="stats_chip_unselected_bg">#2C2C2C</color>
+    <color name="stats_chip_unselected_text">#BDBDBD</color>
+    <color name="stats_info_bg">#2D2533</color>
+    <color name="stats_chart_label">#F5F5F5</color>
+    <color name="stats_chart_grid">#333333</color>
+
+    <!-- Shared Trip Details Colors Dark Mode -->
+    <color name="shared_details_bg">#121212</color>
+    <color name="shared_details_header_bg">#3700B3</color>
+    <color name="shared_details_header_text">#FFFFFF</color>
+    <color name="shared_details_invite_bg">#40FFFFFF</color>
+    <color name="shared_details_card_bg">#1E1E1E</color>
+    <color name="shared_details_text_primary">#FFFFFF</color>
+    <color name="shared_details_text_secondary">#BDBDBD</color>
+    <color name="shared_details_card_stroke">#333333</color>
+    <color name="shared_details_net_hint">#E0E0E0</color>
+    <color name="shared_details_divider">#333333</color>
+    <color name="shared_details_note_bg">#2C2C2C</color>
+    <color name="shared_details_button_primary">#BB86FC</color>
+    <color name="shared_details_button_text">#FFFFFF</color>
+    <color name="shared_details_outline">#BB86FC</color>
+    <color name="shared_details_income">#81C784</color>
+    <color name="shared_details_expense">#E57373</color>
+</resources>

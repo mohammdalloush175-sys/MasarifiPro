@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="4dp"
+    android:layout_marginVertical="4dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="0dp"
+    app:cardBackgroundColor="@color/shared_details_card_bg"
+    app:strokeWidth="1dp"
+    app:strokeColor="@color/shared_details_card_stroke">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="10dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:cardCornerRadius="20dp"
+            app:cardBackgroundColor="@color/shared_details_button_primary"
+            app:cardElevation="0dp">
+            <TextView
+                android:id="@+id/tvMemberAvatar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/se_member_initial_sample"
+                android:textColor="@color/shared_details_button_text"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="12dp">
+
+            <TextView
+                android:id="@+id/tvMemberName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/se_member_name_sample"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/shared_details_text_primary" />
+
+            <TextView
+                android:id="@+id/tvMemberStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/se_offline"
+                android:textSize="12sp"
+                android:textColor="@color/shared_details_text_secondary" />
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/btnDeleteMember"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:visibility="gone"
+            app:tint="#FF5252" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
