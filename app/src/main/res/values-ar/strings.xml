@@ -393,6 +393,12 @@
     <string name="se_join_with_code">انضمام بكود</string>
     <string name="se_no_groups_yet">لا توجد مجموعات مشتركة بعد</string>
     <string name="se_join_requires_login">الانضمام لمجموعة أونلاين يحتاج تسجيل الدخول.</string>
+    <string name="se_quick_actions_title">إدارة المجموعات</string>
+    <string name="se_quick_actions_desc">أنشئ مجموعة جديدة أو انضم إلى مجموعة موجودة باستخدام كود الدعوة.</string>
+    <string name="se_your_groups_title">مجموعاتك</string>
+    <string name="se_your_groups_desc">اضغط على أي مجموعة لعرض المصاريف والأعضاء وتفاصيل التسوية.</string>
+    <string name="se_no_groups_empty_state">لا توجد مجموعات مشتركة بعد\nأنشئ أول مجموعة أو انضم إلى مجموعة باستخدام كود الدعوة.</string>
+    <string name="se_open_group">فتح</string>
 
     <string name="se_group_details">تفاصيل المجموعة</string>
     <string name="se_group_name">اسم المجموعة</string>
@@ -504,6 +510,11 @@
     <string name="se_invalid_amount">مبلغ غير صالح</string>
     <string name="se_expense_added">تمت إضافة المصروف</string>
     <string name="se_expense_add_failed">فشل إضافة المصروف</string>
+    <string name="se_edit_expense">تعديل</string>
+    <string name="se_edit_expense_title">تعديل المصروف</string>
+    <string name="se_save_changes">حفظ التعديلات</string>
+    <string name="se_expense_updated">تم تعديل المصروف</string>
+    <string name="se_expense_update_failed">فشل تعديل المصروف</string>
     <string name="se_all">الكل</string>
 
     <string name="se_invite_share_text">انضم إلى مجموعتي في تطبيق مصاريفي برو\nاسم المجموعة: %1$s\nكود الدعوة: %2$s\nرابط مباشر: %3$s</string>

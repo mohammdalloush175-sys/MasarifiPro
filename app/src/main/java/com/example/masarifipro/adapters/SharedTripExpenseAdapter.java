@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.masarifipro.R;
 import com.example.masarifipro.models.SharedTripExpense;
 import com.example.masarifipro.utils.NumberFormatter;
+import com.google.android.material.button.MaterialButton;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,8 +19,17 @@ import java.util.Locale;
 
 public class SharedTripExpenseAdapter extends RecyclerView.Adapter<SharedTripExpenseAdapter.ViewHolder> {
 
+    public interface OnExpenseActionListener {
+        void onEditExpense(SharedTripExpense expense);
+    }
+
     private List<SharedTripExpense> expenses = new ArrayList<>();
-    private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm", Locale.getDefault());
+    private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy • HH:mm", Locale.getDefault());
+    private final OnExpenseActionListener actionListener;
+
+    public SharedTripExpenseAdapter(OnExpenseActionListener actionListener) {
+        this.actionListener = actionListener;
+    }
 
     public void setExpenses(List<SharedTripExpense> expenses) {
         this.expenses = expenses;
@@ -37,20 +47,26 @@ public class SharedTripExpenseAdapter extends RecyclerView.Adapter<SharedTripExp
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         SharedTripExpense expense = expenses.get(position);
         Context context = holder.itemView.getContext();
+
         holder.tvExpenseTitle.setText(expense.getTitle());
         holder.tvPaidBy.setText(context.getString(R.string.se_paid_by_format, expense.getPaidByName()));
         holder.tvExpenseAmount.setText(NumberFormatter.formatAmount(context, expense.getAmount(), expense.getCurrencyCode()));
-        
         holder.tvExpenseDate.setText(dateFormat.format(new Date(expense.getCreatedAt())));
 
         if (expense.getNote() != null && !expense.getNote().trim().isEmpty()) {
             holder.tvExpenseNote.setVisibility(View.VISIBLE);
-            holder.divider.setVisibility(View.VISIBLE);
-            holder.tvExpenseNote.setText(context.getString(R.string.se_note_format, expense.getNote()));
+            holder.tvExpenseNote.setText(context.getString(R.string.se_note_format, expense.getNote().trim()));
         } else {
             holder.tvExpenseNote.setVisibility(View.GONE);
-            holder.divider.setVisibility(View.GONE);
         }
+
+        View.OnClickListener editClick = v -> {
+            if (actionListener != null) {
+                actionListener.onEditExpense(expense);
+            }
+        };
+        holder.btnEditExpense.setOnClickListener(editClick);
+        holder.itemView.setOnClickListener(editClick);
     }
 
     @Override
@@ -60,7 +76,7 @@ public class SharedTripExpenseAdapter extends RecyclerView.Adapter<SharedTripExp
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvExpenseTitle, tvPaidBy, tvExpenseAmount, tvExpenseNote, tvExpenseDate;
-        View divider;
+        MaterialButton btnEditExpense;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -69,7 +85,7 @@ public class SharedTripExpenseAdapter extends RecyclerView.Adapter<SharedTripExp
             tvExpenseAmount = itemView.findViewById(R.id.tvExpenseAmount);
             tvExpenseNote = itemView.findViewById(R.id.tvExpenseNote);
             tvExpenseDate = itemView.findViewById(R.id.tvExpenseDate);
-            divider = itemView.findViewById(R.id.divider);
+            btnEditExpense = itemView.findViewById(R.id.btnEditExpense);
         }
     }
 }

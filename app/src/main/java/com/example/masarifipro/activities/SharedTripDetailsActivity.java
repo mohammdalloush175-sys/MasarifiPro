@@ -404,7 +404,7 @@ public class SharedTripDetailsActivity extends AppCompatActivity {
         
         rvExpenses = findViewById(R.id.rvExpenses);
         rvExpenses.setLayoutManager(new LinearLayoutManager(this));
-        expenseAdapter = new SharedTripExpenseAdapter();
+        expenseAdapter = new SharedTripExpenseAdapter(this::showEditExpenseDialog);
         rvExpenses.setAdapter(expenseAdapter);
     }
 
@@ -634,14 +634,35 @@ public class SharedTripDetailsActivity extends AppCompatActivity {
     }
 
     private void showAddExpenseDialog() {
+        showExpenseDialog(null);
+    }
+
+    private void showEditExpenseDialog(SharedTripExpense expense) {
+        showExpenseDialog(expense);
+    }
+
+    private void showExpenseDialog(SharedTripExpense editingExpense) {
+        boolean isEditing = editingExpense != null;
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View view = getLayoutInflater().inflate(R.layout.dialog_add_shared_expense, null);
         builder.setView(view);
 
+        TextView tvDialogTitle = view.findViewById(R.id.tvExpenseDialogTitle);
         TextInputEditText etTitle = view.findViewById(R.id.etExpenseTitle);
         TextInputEditText etAmount = view.findViewById(R.id.etExpenseAmount);
         TextInputEditText etNote = view.findViewById(R.id.etExpenseNote);
         Spinner spinnerPaidBy = view.findViewById(R.id.spinnerPaidBy);
+        Button btnSaveExpense = view.findViewById(R.id.btnSaveExpense);
+
+        tvDialogTitle.setText(isEditing ? R.string.se_edit_expense_title : R.string.se_add_new_expense);
+        btnSaveExpense.setText(isEditing ? R.string.se_save_changes : R.string.se_save);
+
+        if (isEditing) {
+            etTitle.setText(editingExpense.getTitle());
+            etAmount.setText(String.valueOf(editingExpense.getAmount()));
+            etNote.setText(editingExpense.getNote() == null ? "" : editingExpense.getNote());
+        }
 
         List<String> memberNames = new ArrayList<>();
         String currentUid = isGuestMode ? "guest_user" : (currentUser != null ? currentUser.getUid() : "");
@@ -651,24 +672,27 @@ public class SharedTripDetailsActivity extends AppCompatActivity {
             else if (m.isOffline()) name += " (" + getString(R.string.se_offline) + ")";
             memberNames.add(name);
         }
+
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, memberNames);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerPaidBy.setAdapter(adapter);
 
+        String selectedUid = isEditing ? editingExpense.getPaidByUid() : currentUid;
         for (int i = 0; i < membersList.size(); i++) {
-            if (membersList.get(i).getUid().equals(currentUid)) {
+            if (membersList.get(i).getUid().equals(selectedUid)) {
                 spinnerPaidBy.setSelection(i);
                 break;
             }
         }
 
         AlertDialog dialog = builder.create();
-        view.findViewById(R.id.btnSaveExpense).setOnClickListener(v -> {
-            String title = etTitle.getText().toString().trim();
-            String amountStr = etAmount.getText().toString().trim().replace(",", "");
+        btnSaveExpense.setOnClickListener(v -> {
+            String title = etTitle.getText() == null ? "" : etTitle.getText().toString().trim();
+            String amountStr = etAmount.getText() == null ? "" : etAmount.getText().toString().trim().replace(",", "");
+            String note = etNote.getText() == null ? "" : etNote.getText().toString().trim();
             int selectedMemberIdx = spinnerPaidBy.getSelectedItemPosition();
 
-            if (title.isEmpty() || amountStr.isEmpty() || selectedMemberIdx == -1) {
+            if (title.isEmpty() || amountStr.isEmpty() || selectedMemberIdx < 0 || selectedMemberIdx >= membersList.size()) {
                 Toast.makeText(this, R.string.se_fill_required_fields, Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -681,7 +705,11 @@ public class SharedTripDetailsActivity extends AppCompatActivity {
                 }
 
                 SharedTripMember paidBy = membersList.get(selectedMemberIdx);
-                addExpense(title, amount, paidBy, etNote.getText().toString());
+                if (isEditing) {
+                    updateExpense(editingExpense, title, amount, paidBy, note);
+                } else {
+                    addExpense(title, amount, paidBy, note);
+                }
                 dialog.dismiss();
             } catch (NumberFormatException e) {
                 Toast.makeText(this, R.string.se_invalid_amount, Toast.LENGTH_SHORT).show();
@@ -710,6 +738,46 @@ public class SharedTripDetailsActivity extends AppCompatActivity {
         db.collection("shared_trips").document(trip.getTripId()).collection("expenses").document(expenseId).set(expense)
                 .addOnSuccessListener(aVoid -> Toast.makeText(this, R.string.se_expense_added, Toast.LENGTH_SHORT).show())
                 .addOnFailureListener(e -> Toast.makeText(this, R.string.se_expense_add_failed, Toast.LENGTH_SHORT).show());
+    }
+
+    private void updateExpense(SharedTripExpense expense, String title, double amount, SharedTripMember paidBy, String note) {
+        long updatedAt = System.currentTimeMillis();
+
+        if (isGuestMode) {
+            expense.setTitle(title);
+            expense.setAmount(amount);
+            expense.setPaidByUid(paidBy.getUid());
+            expense.setPaidByName(paidBy.getName());
+            expense.setNote(note);
+            trip.setUpdatedAt(updatedAt);
+
+            LocalSharedTripManager.saveExpenses(this, trip.getTripId(), allExpensesList);
+            LocalSharedTripManager.saveTrip(this, trip);
+            applyFilters();
+            calculateTotals();
+            Toast.makeText(this, R.string.se_expense_updated, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        Map<String, Object> updates = new HashMap<>();
+        updates.put("title", title);
+        updates.put("amount", amount);
+        updates.put("paidByUid", paidBy.getUid());
+        updates.put("paidByName", paidBy.getName());
+        updates.put("note", note);
+
+        WriteBatch batch = db.batch();
+        batch.update(
+                db.collection("shared_trips").document(trip.getTripId()).collection("expenses").document(expense.getExpenseId()),
+                updates
+        );
+        batch.update(db.collection("shared_trips").document(trip.getTripId()), "updatedAt", updatedAt);
+        batch.commit()
+                .addOnSuccessListener(aVoid -> Toast.makeText(this, R.string.se_expense_updated, Toast.LENGTH_SHORT).show())
+                .addOnFailureListener(e -> {
+                    Log.e(TAG, "expense update failed", e);
+                    Toast.makeText(this, R.string.se_expense_update_failed, Toast.LENGTH_SHORT).show();
+                });
     }
 
     private void calculateSettlements() {

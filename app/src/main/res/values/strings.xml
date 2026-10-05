@@ -393,6 +393,12 @@
     <string name="se_join_with_code">Join with Code</string>
     <string name="se_no_groups_yet">No shared groups yet</string>
     <string name="se_join_requires_login">Joining an online group requires signing in.</string>
+    <string name="se_quick_actions_title">Manage groups</string>
+    <string name="se_quick_actions_desc">Create a new group or join an existing one with an invite code.</string>
+    <string name="se_your_groups_title">Your groups</string>
+    <string name="se_your_groups_desc">Tap a group to view expenses, members, and settlement details.</string>
+    <string name="se_no_groups_empty_state">No shared groups yet\nCreate your first group or join one with an invite code.</string>
+    <string name="se_open_group">Open</string>
 
     <string name="se_group_details">Group Details</string>
     <string name="se_group_name">Group Name</string>
@@ -505,6 +511,11 @@
     <string name="se_invalid_amount">Invalid amount</string>
     <string name="se_expense_added">Expense added</string>
     <string name="se_expense_add_failed">Failed to add expense</string>
+    <string name="se_edit_expense">Edit</string>
+    <string name="se_edit_expense_title">Edit Expense</string>
+    <string name="se_save_changes">Save Changes</string>
+    <string name="se_expense_updated">Expense updated</string>
+    <string name="se_expense_update_failed">Failed to update expense</string>
     <string name="se_all">All</string>
 
     <string name="se_invite_share_text">Join my group in Masarifi Pro\nGroup name: %1$s\nInvite code: %2$s\nDirect link: %3$s</string>

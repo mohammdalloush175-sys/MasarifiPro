@@ -5,9 +5,14 @@
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="8dp"
     android:layout_marginVertical="6dp"
-    app:cardCornerRadius="16dp"
-    app:cardElevation="2dp"
-    app:strokeWidth="0dp">
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
+    app:cardBackgroundColor="@color/shared_details_card_bg"
+    app:cardCornerRadius="18dp"
+    app:cardElevation="0dp"
+    app:strokeColor="@color/shared_details_card_stroke"
+    app:strokeWidth="1dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,26 +23,53 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tvTripName"
+            <ImageView
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:background="@drawable/bg_shared_group_icon"
+                android:contentDescription="@null"
+                android:padding="11dp"
+                android:src="@drawable/ic_shared_group_24"
+                app:tint="?attr/colorPrimary" />
+
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
                 android:layout_weight="1"
-                android:text="@string/se_sample_trip_name"
-                android:textColor="#212121"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvTripName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/se_sample_trip_name"
+                    android:textColor="@color/shared_details_text_primary"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="@string/se_sample_creation_date"
+                    android:textColor="@color/shared_details_text_secondary"
+                    android:textSize="11sp" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/tvCurrency"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#F5F5F5"
+                android:background="@drawable/bg_shared_currency_chip"
                 android:paddingHorizontal="10dp"
-                android:paddingVertical="4dp"
+                android:paddingVertical="6dp"
                 android:text="USD"
                 android:textColor="?attr/colorPrimary"
                 android:textSize="12sp"
@@ -48,86 +80,70 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginStart="8dp"
+                android:contentDescription="@null"
                 android:src="@android:drawable/stat_notify_sync"
                 android:visibility="gone"
                 app:tint="#FF9800" />
 
             <ImageButton
                 android:id="@+id/btnDeleteLeave"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_marginStart="8dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="4dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:src="@android:drawable/ic_menu_delete"
                 android:contentDescription="@string/se_delete_or_leave"
-                app:tint="#BDBDBD" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tvInviteCode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/se_sample_invite_code"
-                android:textColor="#757575"
-                android:textSize="14sp" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
-
-            <TextView
-                android:id="@+id/tvMemberCount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/se_members_plain_count"
-                android:textColor="#757575"
-                android:textSize="14sp" />
+                android:padding="9dp"
+                android:src="@drawable/ic_delete_outline_24"
+                app:tint="@color/shared_details_text_secondary" />
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginVertical="12dp"
-            android:background="#F5F5F5" />
+            android:layout_marginTop="14dp"
+            android:background="@color/shared_details_divider" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:layout_marginTop="12dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_key_18"
+                app:tint="@color/shared_details_text_secondary" />
 
             <TextView
+                android:id="@+id/tvInviteCode"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="7dp"
                 android:layout_weight="1"
-                android:text="@string/se_total_expenses_colon"
-                android:textColor="#757575"
-                android:textSize="14sp" />
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/se_sample_invite_code"
+                android:textColor="@color/shared_details_text_secondary"
+                android:textSize="13sp" />
 
             <TextView
-                android:id="@+id/tvTotalExpenses"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0.00"
+                android:text="@string/se_open_group"
                 android:textColor="?attr/colorPrimary"
-                android:textSize="16sp"
+                android:textSize="13sp"
                 android:textStyle="bold" />
-        </LinearLayout>
 
-        <TextView
-            android:id="@+id/tvDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/se_sample_creation_date"
-            android:textColor="#BDBDBD"
-            android:textSize="11sp" />
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="4dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_chevron_forward_24"
+                app:tint="?attr/colorPrimary" />
+        </LinearLayout>
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

@@ -75,9 +75,9 @@ public class SharedTripAdapter extends RecyclerView.Adapter<SharedTripAdapter.Vi
         holder.tvDate.setText(context.getString(R.string.se_creation_date_format, sdf.format(new Date(trip.getCreatedAt()))));
 
         if (currentUid != null && currentUid.equals(trip.getOwnerUid())) {
-            holder.btnDeleteLeave.setImageResource(android.R.drawable.ic_menu_delete);
+            holder.btnDeleteLeave.setImageResource(R.drawable.ic_delete_outline_24);
         } else {
-            holder.btnDeleteLeave.setImageResource(android.R.drawable.ic_menu_close_clear_cancel);
+            holder.btnDeleteLeave.setImageResource(R.drawable.ic_leave_24);
         }
 
         // Handle Sync Status
@@ -113,7 +113,7 @@ public class SharedTripAdapter extends RecyclerView.Adapter<SharedTripAdapter.Vi
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvTripName, tvInviteCode, tvCurrency, tvMemberCount, tvTotalExpenses, tvDate;
+        TextView tvTripName, tvInviteCode, tvCurrency, tvDate;
         ImageButton btnDeleteLeave;
         ImageView ivSyncStatus;
 
@@ -122,8 +122,6 @@ public class SharedTripAdapter extends RecyclerView.Adapter<SharedTripAdapter.Vi
             tvTripName = itemView.findViewById(R.id.tvTripName);
             tvInviteCode = itemView.findViewById(R.id.tvInviteCode);
             tvCurrency = itemView.findViewById(R.id.tvCurrency);
-            tvMemberCount = itemView.findViewById(R.id.tvMemberCount);
-            tvTotalExpenses = itemView.findViewById(R.id.tvTotalExpenses);
             tvDate = itemView.findViewById(R.id.tvDate);
             btnDeleteLeave = itemView.findViewById(R.id.btnDeleteLeave);
             ivSyncStatus = itemView.findViewById(R.id.ivSyncStatus);
