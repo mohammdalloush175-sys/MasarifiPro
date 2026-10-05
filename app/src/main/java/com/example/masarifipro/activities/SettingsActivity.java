@@ -159,6 +159,17 @@ public class SettingsActivity extends AppCompatActivity {
         findViewById(R.id.btnAppUpdates).setOnClickListener(v -> {
             startActivity(new Intent(this, UpdatesActivity.class));
         });
+        findViewById(R.id.btnShareApp).setOnClickListener(v -> {
+            String shareUrl = "https://kanasta-7ecdf.web.app/apps/masarifi-pro/";
+            String shareText = getString(R.string.share_app_message, shareUrl);
+
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            shareIntent.setType("text/plain");
+            shareIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name));
+            shareIntent.putExtra(Intent.EXTRA_TEXT, shareText);
+
+            startActivity(Intent.createChooser(shareIntent, getString(R.string.share_app)));
+        });
 
         findViewById(R.id.btnAppLock).setOnClickListener(v -> {
             startActivity(new Intent(this, AppLockSettingsActivity.class));

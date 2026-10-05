@@ -680,4 +680,6 @@
     <string name="update_notification_channel_description">Notifications for new Masarifi Pro releases</string>
     <string name="update_available_notification_title">A new Masarifi Pro update is available</string>
     <string name="update_available_notification_body">Version %1$s is now available. Tap to view and download it.</string>
-</resources>
+    <string name="share_app">Share Masarifi Pro</string>
+    <string name="share_app_message">Try Masarifi Pro to manage your expenses and shared expenses easily ðŸ’°
+%1$s</string></resources>
