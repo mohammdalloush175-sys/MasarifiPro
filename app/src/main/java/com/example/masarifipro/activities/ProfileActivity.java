@@ -18,9 +18,14 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.masarifipro.R;
+import com.example.masarifipro.database.AppDatabase;
+import com.example.masarifipro.models.AppUser;
 import com.example.masarifipro.models.SyncOperation;
 import com.example.masarifipro.utils.LocaleHelper;
 import com.example.masarifipro.utils.SyncManager;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -59,6 +64,8 @@ public class ProfileActivity extends AppCompatActivity {
     private FirebaseUser currentUser;
     private String uid;
     private GoogleSignInClient mGoogleSignInClient;
+    private AppDatabase db;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -72,6 +79,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         dbFirestore = FirebaseFirestore.getInstance();
+        db = AppDatabase.getDatabase(this);
         currentUser = mAuth.getCurrentUser();
 
         if (currentUser == null && !isGuestMode()) {
@@ -297,21 +305,44 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void loadProfileInfo() {
         if (uid == null) return;
+
+        // 1. قراءة فورية من Room DB للعرض Offline
+        executor.execute(() -> {
+            AppUser localUser = db.userDao().getUserByUid(uid);
+            runOnUiThread(() -> {
+                if (localUser != null && !TextUtils.isEmpty(localUser.getName())) {
+                    tvUserName.setText(localUser.getName());
+                }
+            });
+        });
+
+        // 2. تحديث من Firestore عند توفر الشبكة
         DocumentReference docRef = dbFirestore.collection("users").document(uid).collection("profile").document("info");
         docRef.get().addOnSuccessListener(documentSnapshot -> {
             if (documentSnapshot.exists()) {
                 String name = documentSnapshot.getString("name");
                 if (!TextUtils.isEmpty(name)) {
                     tvUserName.setText(name);
+                    // مزامنة Room DB بالاسم القادم من Firestore
+                    saveNameToRoom(name);
                 } else {
                     setDefaultName();
                 }
             } else {
-                setDefaultName();
+                // لا يوجد ملف في Firestore — استخدم Room أو الاسم الافتراضي
+                executor.execute(() -> {
+                    AppUser localUser = db.userDao().getUserByUid(uid);
+                    runOnUiThread(() -> {
+                        if (localUser != null && !TextUtils.isEmpty(localUser.getName())) {
+                            tvUserName.setText(localUser.getName());
+                        } else {
+                            setDefaultName();
+                        }
+                    });
+                });
             }
         }).addOnFailureListener(e -> {
-            Toast.makeText(this, R.string.profile_load_failed, Toast.LENGTH_SHORT).show();
-            setDefaultName();
+            // Offline أو خطأ — Room DB يعطي النتيجة المؤقتة بالفعل من الخطوة 1
         });
     }
 
@@ -325,7 +356,25 @@ public class ProfileActivity extends AppCompatActivity {
         }
         
         tvUserName.setText(defaultName);
+        saveNameToRoom(defaultName);
         saveProfileToFirestore(defaultName);
+    }
+
+    // حفظ الاسم في Room DB المحلي (يعمل Offline)
+    private void saveNameToRoom(String name) {
+        if (uid == null || name == null) return;
+        executor.execute(() -> {
+            AppUser user = db.userDao().getUserByUid(uid);
+            if (user == null) {
+                user = new AppUser(uid, name, currentUser != null ? currentUser.getEmail() : null);
+            } else {
+                user.setName(name);
+                if (currentUser != null && user.getEmail() == null) {
+                    user.setEmail(currentUser.getEmail());
+                }
+            }
+            db.userDao().insert(user); // OnConflictStrategy.REPLACE يُحدِّث تلقائياً
+        });
     }
 
     private void saveProfileToFirestore(String name) {
@@ -373,7 +422,8 @@ public class ProfileActivity extends AppCompatActivity {
     private void updateName(String newName) {
         if (uid == null) return;
         tvUserName.setText(newName);
-        saveProfileToFirestore(newName);
+        saveNameToRoom(newName);          // ← حفظ فوري في Room DB (يعمل Offline)
+        saveProfileToFirestore(newName);  // ← رفع للـ Firestore عند توفر الشبكة
         Toast.makeText(this, R.string.name_updated, Toast.LENGTH_SHORT).show();
     }
 

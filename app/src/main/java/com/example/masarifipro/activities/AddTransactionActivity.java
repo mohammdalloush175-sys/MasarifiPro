@@ -26,6 +26,7 @@ import com.example.masarifipro.R;
 import com.example.masarifipro.adapters.CategoryDropdownAdapter;
 import com.example.masarifipro.database.AppDatabase;
 import com.example.masarifipro.models.Category;
+import com.example.masarifipro.models.CurrencyAccount;
 import com.example.masarifipro.models.Transaction;
 import com.example.masarifipro.utils.BudgetNotificationHelper;
 import com.example.masarifipro.utils.LocaleHelper;
@@ -286,10 +287,30 @@ public class AddTransactionActivity extends AppCompatActivity {
     }
 
     private void setupSpinner() {
-        String[] currencies = {"USD", "EUR", "SAR", "AED", "KWD", "SYP", "LBP"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, currencies);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spSourceCurrency.setAdapter(adapter);
+        // تحميل العملات المفعَّلة من قاعدة البيانات بدلاً من القائمة الثابتة
+        executorService.execute(() -> {
+            List<CurrencyAccount> activeCurrencies = db.currencyDao().getActiveCurrencies();
+            List<String> currencyCodes = new ArrayList<>();
+            for (CurrencyAccount c : activeCurrencies) {
+                currencyCodes.add(c.getCurrencyCode());
+            }
+            // إن لم توجد عملات مفعَّلة، استخدم القائمة الافتراضية كـ fallback
+            if (currencyCodes.isEmpty()) {
+                currencyCodes.add("USD");
+                currencyCodes.add("EUR");
+                currencyCodes.add("SAR");
+                currencyCodes.add("AED");
+                currencyCodes.add("KWD");
+                currencyCodes.add("SYP");
+                currencyCodes.add("LBP");
+            }
+            runOnUiThread(() -> {
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                        android.R.layout.simple_spinner_item, currencyCodes);
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spSourceCurrency.setAdapter(adapter);
+            });
+        });
     }
 
     private boolean isGuestMode() {
