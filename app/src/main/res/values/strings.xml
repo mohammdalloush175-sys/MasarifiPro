@@ -113,6 +113,10 @@
     <string name="exchange_question">Is this income from currency exchange?</string>
     <string name="source_currency">Source Currency</string>
     <string name="amount_to_exchange">Amount to exchange</string>
+    <string name="exchange_rate_choice">Which currency are you quoting?</string>
+    <string name="exchange_rate_question">How many %2$s for 1 %1$s?</string>
+    <string name="exchange_rate_equation">1 %1$s = [Rate] %2$s</string>
+    <string name="developer_apps">Other apps I developed</string>
     <string name="exchange_rate">Exchange Rate</string>
     <string name="exchange_result_prefix">Result: </string>
     <string name="category_hint">Category (e.g., Food, Shopping)</string>

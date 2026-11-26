@@ -1,6 +1,7 @@
 package com.example.masarifipro.activities;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -169,6 +170,15 @@ public class SettingsActivity extends AppCompatActivity {
             shareIntent.putExtra(Intent.EXTRA_TEXT, shareText);
 
             startActivity(Intent.createChooser(shareIntent, getString(R.string.share_app)));
+        });
+
+        findViewById(R.id.btnDeveloperApps).setOnClickListener(v -> {
+            Uri appsPage = Uri.parse("https://mohammd-apps.web.app/apps/");
+            try {
+                startActivity(new Intent(Intent.ACTION_VIEW, appsPage));
+            } catch (ActivityNotFoundException e) {
+                Toast.makeText(this, R.string.update_cannot_open_link, Toast.LENGTH_SHORT).show();
+            }
         });
 
         findViewById(R.id.btnAppLock).setOnClickListener(v -> {

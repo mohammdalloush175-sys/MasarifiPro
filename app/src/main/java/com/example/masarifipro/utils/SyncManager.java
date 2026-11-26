@@ -174,8 +174,7 @@ public class SyncManager {
 
             FirebaseFirestore firestore = FirebaseFirestore.getInstance();
             String path;
-            if ("users".equals(operation.getCollectionName())
-                    || "profile".equals(operation.getCollectionName())) {
+            if ("users".equals(operation.getCollectionName())) {
                 path = "users";
             } else {
                 path = "users/" + uid + "/" + operation.getCollectionName();

@@ -73,7 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
-                android:digits="0123456789٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶٧٨٩.,٫٬"
+                android:digits="0123456789٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹.,٫٬"
                 android:textSize="24sp"
                 android:textColor="?attr/colorOnSurface"
                 android:textStyle="bold"
@@ -166,10 +166,40 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="numberDecimal"
-                        android:digits="0123456789٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶٧٨٩.,٫٬" />
+                        android:digits="0123456789٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹.,٫٬" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <TextView
+                    android:id="@+id/exchangeRateQuestion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/exchange_rate_choice"
+                    android:textColor="?attr/colorOnSurface"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:id="@+id/exchangeRateDirection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:checkedButton="@+id/ratePerReceived">
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@id/ratePerReceived"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="48dp" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/ratePerSource"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="48dp" />
+                </RadioGroup>
+
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/exchangeRateLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/exchange_rate"
@@ -184,7 +214,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="numberDecimal"
-                        android:digits="0123456789٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶٧٨٩.,٫٬" />
+                        android:digits="0123456789٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹.,٫٬" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView

@@ -113,6 +113,10 @@
     <string name="exchange_question">هل هذا الدخل ناتج عن تحويل من عملة أخرى؟</string>
     <string name="source_currency">العملة المصدر</string>
     <string name="amount_to_exchange">المبلغ المراد تصريفه</string>
+    <string name="exchange_rate_choice">سعر أي عملة عم تدخل؟</string>
+    <string name="exchange_rate_question">كم %2$s مقابل ١ %1$s؟</string>
+    <string name="exchange_rate_equation">١ %1$s = [السعر] %2$s</string>
+    <string name="developer_apps">تطبيقات أخرى من تطويري</string>
     <string name="exchange_rate">سعر الصرف</string>
     <string name="exchange_result_prefix">الناتج: </string>
     <string name="category_hint">الفئة (مثلاً: طعام، تسوق)</string>

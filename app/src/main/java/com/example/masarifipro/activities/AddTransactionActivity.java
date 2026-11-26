@@ -16,6 +16,8 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,6 +40,7 @@ import com.google.android.material.button.MaterialButtonToggleGroup;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -46,6 +49,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.Currency;
 import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
@@ -74,6 +78,9 @@ public class AddTransactionActivity extends AppCompatActivity {
     // Exchange features
     private LinearLayout layoutExchange, layoutExchangeSection;
     private CheckBox cbExchangeTransfer;
+    private RadioGroup rateDirection;
+    private RadioButton ratePerReceived, ratePerSource;
+    private TextInputLayout rateLayout;
     private Spinner spSourceCurrency;
     private TextInputEditText etSourceAmount, etExchangeRate;
     private TextView tvExchangeResult;
@@ -178,6 +185,10 @@ public class AddTransactionActivity extends AppCompatActivity {
         spSourceCurrency = findViewById(R.id.spSourceCurrency);
         etSourceAmount = findViewById(R.id.etSourceAmount);
         etExchangeRate = findViewById(R.id.etExchangeRate);
+        rateLayout = findViewById(R.id.exchangeRateLayout);
+        rateDirection = findViewById(R.id.exchangeRateDirection);
+        ratePerReceived = findViewById(R.id.ratePerReceived);
+        ratePerSource = findViewById(R.id.ratePerSource);
         tvExchangeResult = findViewById(R.id.tvExchangeResult);
 
         setupCategorySuggestions();
@@ -309,6 +320,7 @@ public class AddTransactionActivity extends AppCompatActivity {
                         android.R.layout.simple_spinner_item, currencyCodes);
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spSourceCurrency.setAdapter(adapter);
+                updateExchangeRateLabels();
             });
         });
     }
@@ -338,7 +350,7 @@ public class AddTransactionActivity extends AppCompatActivity {
                 etCategory.setText(R.string.exchange_category); 
                 etCategory.setEnabled(false);
                 if (etCategory.isPopupShowing()) etCategory.dismissDropDown();
-                calculateExchange();
+                updateExchangeRateLabels();
             } else {
                 etCategory.setText("");
                 etCategory.setEnabled(true);
@@ -350,15 +362,20 @@ public class AddTransactionActivity extends AppCompatActivity {
             if (!checkedIds.isEmpty()) {
                 Chip chip = findViewById(checkedIds.get(0));
                 selectedCurrency = chip.getText().toString();
-                calculateExchange();
+                updateExchangeRateLabels();
                 loadCategorySuggestions();
             }
         });
 
         spSourceCurrency.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override public void onItemSelected(AdapterView<?> parent, View view, int position, long id) { calculateExchange(); }
-            @Override public void onNothingSelected(AdapterView<?> parent) {}
+            @Override public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                updateExchangeRateLabels();
+            }
+            @Override public void onNothingSelected(AdapterView<?> parent) {
+                updateExchangeRateLabels();
+            }
         });
+        rateDirection.setOnCheckedChangeListener((group, checkedId) -> updateExchangeRateLabels());
 
         findViewById(R.id.cardDate).setOnClickListener(v -> showDatePicker());
         btnSave.setOnClickListener(v -> saveTransaction());
@@ -382,7 +399,7 @@ public class AddTransactionActivity extends AppCompatActivity {
                        .replace('٨', '8').replace('٩', '9');
         result = result.replace('۰', '0').replace('۱', '1').replace('۲', '2').replace('۳', '3')
                        .replace('۴', '4').replace('۵', '5').replace('۶', '6').replace('۷', '7')
-                       .replace('٨', '8').replace('۹', '9');
+                       .replace('۸', '8').replace('۹', '9');
         result = result.replace('٫', '.');
         result = result.replace("٬", "").replace(" ", "");
         if (result.contains(",") && !result.contains(".")) {
@@ -394,17 +411,46 @@ public class AddTransactionActivity extends AppCompatActivity {
         return result;
     }
 
+    private String normalizeExchangeRate(String input) {
+        return normalizeNumberInput(input.replace(',', '.'));
+    }
+
+    private void updateExchangeRateLabels() {
+        String sourceCode = (String) spSourceCurrency.getSelectedItem();
+        if (sourceCode == null) {
+            return;
+        }
+
+        Locale locale = Locale.forLanguageTag(LocaleHelper.getLanguage(this));
+        String sourceName = Currency.getInstance(sourceCode).getDisplayName(locale);
+        String receivedName = Currency.getInstance(selectedCurrency).getDisplayName(locale);
+        ratePerReceived.setText(getString(R.string.exchange_rate_question, receivedName, sourceName));
+        ratePerSource.setText(getString(R.string.exchange_rate_question, sourceName, receivedName));
+
+        boolean perSource = ratePerSource.isChecked();
+        rateLayout.setHelperText(getString(R.string.exchange_rate_equation,
+                perSource ? sourceName : receivedName, perSource ? receivedName : sourceName));
+        calculateExchange();
+    }
+
+    private double exchangeMultiplier(double rate) {
+        return ratePerSource.isChecked() ? rate : 1.0 / rate;
+    }
+
     private void calculateExchange() {
         if (cbExchangeTransfer.isChecked()) {
             try {
                 String srcAmtStr = etSourceAmount.getText().toString();
                 String rateStr = etExchangeRate.getText().toString();
                 String normalizedSrcAmt = normalizeNumberInput(srcAmtStr);
-                String normalizedRate = normalizeNumberInput(rateStr);
+                String normalizedRate = normalizeExchangeRate(rateStr);
                 if (!TextUtils.isEmpty(normalizedSrcAmt) && !normalizedRate.isEmpty()) {
                     double srcAmt = Double.parseDouble(normalizedSrcAmt);
                     double rate = Double.parseDouble(normalizedRate);
-                    double result = srcAmt * rate;
+                    double result = srcAmt * exchangeMultiplier(rate);
+                    if (!(srcAmt > 0 && rate > 0 && result > 0 && result <= Double.MAX_VALUE)) {
+                        throw new NumberFormatException();
+                    }
                     tvExchangeResult.setText(getString(R.string.exchange_result_prefix) + NumberFormatter.format(result, selectedCurrency));
                     isFormatting = true;
                     etAmount.setText(NumberFormatter.formatDecimal(result));
@@ -418,29 +464,6 @@ public class AddTransactionActivity extends AppCompatActivity {
         if (isSaving) return;
         isSaving = true;
         if (btnSave != null) btnSave.setEnabled(false);
-
-        String amountText = etAmount.getText().toString();
-        String normalizedAmount = normalizeNumberInput(amountText);
-        String category = etCategory.getText().toString().trim();
-        String description = etDescription.getText().toString().trim();
-
-        if (normalizedAmount.isEmpty()) {
-            showError(R.string.amount_required);
-            return;
-        }
-
-        double amount;
-        try {
-            amount = Double.parseDouble(normalizedAmount);
-        } catch (NumberFormatException e) {
-            showError(R.string.invalid_number_format);
-            return;
-        }
-
-        if (amount <= 0) {
-            showError(R.string.amount_must_be_positive);
-            return;
-        }
 
         if (TextUtils.isEmpty(selectedType) || TextUtils.isEmpty(selectedCurrency)) {
             showError(R.string.fill_required_fields);
@@ -462,9 +485,33 @@ public class AddTransactionActivity extends AppCompatActivity {
 
         if (cbExchangeTransfer.isChecked() && "income".equals(selectedType) && editTransactionId == -1) {
             handleExchangeSave(userId, sharedId, now, timestamp);
-        } else {
-            handleSingleSave(userId, sharedId, now, timestamp, amount, category, description);
+            return;
         }
+
+        String amountText = etAmount.getText().toString();
+        String normalizedAmount = normalizeNumberInput(amountText);
+
+        if (normalizedAmount.isEmpty()) {
+            showError(R.string.amount_required);
+            return;
+        }
+
+        double amount;
+        try {
+            amount = Double.parseDouble(normalizedAmount);
+        } catch (NumberFormatException e) {
+            showError(R.string.invalid_number_format);
+            return;
+        }
+
+        if (!(amount > 0 && amount <= Double.MAX_VALUE)) {
+            showError(R.string.amount_must_be_positive);
+            return;
+        }
+
+        String category = etCategory.getText().toString().trim();
+        String description = etDescription.getText().toString().trim();
+        handleSingleSave(userId, sharedId, now, timestamp, amount, category, description);
     }
 
     private void showError(int resId) {
@@ -474,11 +521,15 @@ public class AddTransactionActivity extends AppCompatActivity {
     }
 
     private void handleExchangeSave(String userId, String sharedId, long now, long timestamp) {
-        String sourceCurrency = spSourceCurrency.getSelectedItem().toString();
+        String sourceCurrency = (String) spSourceCurrency.getSelectedItem();
+        if (sourceCurrency == null) {
+            showError(R.string.fill_required_fields);
+            return;
+        }
         String srcAmtStr = etSourceAmount.getText().toString();
         String rateStr = etExchangeRate.getText().toString();
         String normalizedSrcAmt = normalizeNumberInput(srcAmtStr);
-        String normalizedRate = normalizeNumberInput(rateStr);
+        String normalizedRate = normalizeExchangeRate(rateStr);
 
         if (TextUtils.isEmpty(normalizedSrcAmt) || TextUtils.isEmpty(normalizedRate)) {
             showError(R.string.fill_required_fields);
@@ -494,12 +545,17 @@ public class AddTransactionActivity extends AppCompatActivity {
             return;
         }
 
-        if (srcAmt <= 0 || rate <= 0 || sourceCurrency.equals(selectedCurrency)) {
+        if (!(srcAmt > 0 && rate > 0) || sourceCurrency.equals(selectedCurrency)) {
             showError(R.string.enter_valid_numbers);
             return;
         }
 
-        double targetAmount = srcAmt * rate;
+        double multiplier = exchangeMultiplier(rate);
+        double targetAmount = srcAmt * multiplier;
+        if (!(targetAmount > 0 && targetAmount <= Double.MAX_VALUE)) {
+            showError(R.string.enter_valid_numbers);
+            return;
+        }
         String groupId = UUID.randomUUID().toString();
         String formattedSrcAmt = NumberFormatter.formatDecimal(srcAmt);
         String formattedTargetAmt = NumberFormatter.formatDecimal(targetAmount);
@@ -515,7 +571,7 @@ public class AddTransactionActivity extends AppCompatActivity {
         exp.setDescription(getString(R.string.exchange) + ": " + formattedSrcAmt + " " + sourceCurrency +
                 "\n" + getString(R.string.rate) + ": " + rate +
                 "\n" + getString(R.string.result) + ": " + formattedTargetAmt + " " + selectedCurrency);
-        configureExchangeFields(exp, groupId, sourceCurrency, selectedCurrency, rate);
+        configureExchangeFields(exp, groupId, sourceCurrency, selectedCurrency, multiplier);
 
         Transaction inc = createBaseTransaction(userId, sharedId, now, timestamp);
         inc.setFirestoreId(UUID.randomUUID().toString());
@@ -527,7 +583,7 @@ public class AddTransactionActivity extends AppCompatActivity {
         inc.setCategoryName(getString(R.string.exchange_category));
         inc.setDescription(getString(R.string.exchange_result) + ": " + formattedSrcAmt + " " + sourceCurrency +
                 "\n" + getString(R.string.rate) + ": " + rate);
-        configureExchangeFields(inc, groupId, sourceCurrency, selectedCurrency, rate);
+        configureExchangeFields(inc, groupId, sourceCurrency, selectedCurrency, multiplier);
 
         saveAndSyncExchange(exp, inc);
     }
@@ -654,9 +710,11 @@ public class AddTransactionActivity extends AppCompatActivity {
     private void saveAndSyncExchange(final Transaction exp, final Transaction inc) {
         executorService.execute(() -> {
             try {
-                exp.setId(db.transactionDao().insert(exp));
-                inc.setId(db.transactionDao().insert(inc));
-                TransactionBalanceCalculator.recalculateAll(db);
+                db.runInTransaction(() -> {
+                    exp.setId(db.transactionDao().insert(exp));
+                    inc.setId(db.transactionDao().insert(inc));
+                    TransactionBalanceCalculator.recalculateAll(db);
+                });
                 Transaction savedExpense = db.transactionDao().getTransactionById(exp.getId());
                 Transaction savedIncome = db.transactionDao().getTransactionById(inc.getId());
                 
@@ -689,7 +747,6 @@ public class AddTransactionActivity extends AppCompatActivity {
     private void setupAmountFormatting() {
         etAmount.addTextChangedListener(createCommaSeparator(etAmount));
         etSourceAmount.addTextChangedListener(createCommaSeparator(etSourceAmount));
-        etExchangeRate.addTextChangedListener(createCommaSeparator(etExchangeRate));
     }
 
     private TextWatcher createCommaSeparator(final TextInputEditText editText) {
@@ -697,16 +754,21 @@ public class AddTransactionActivity extends AppCompatActivity {
             @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
             @Override public void onTextChanged(CharSequence s, int start, int before, int count) {}
             @Override public void afterTextChanged(Editable s) {
-                if (isFormatting || s.toString().isEmpty()) return;
+                String input = s.toString();
+                if (isFormatting || input.isEmpty() || input.endsWith(".")
+                        || input.endsWith(",") || input.endsWith("٫")) return;
                 isFormatting = true;
                 try {
                     String clean = normalizeNumberInput(s.toString());
+                    if (clean.contains(".")) return;
                     double parsed = Double.parseDouble(clean);
                     String formatted = NumberFormatter.formatDecimal(parsed);
                     editText.setText(formatted);
                     editText.setSelection(formatted.length());
-                } catch (Exception ignored) {}
-                isFormatting = false;
+                } catch (NumberFormatException ignored) {
+                } finally {
+                    isFormatting = false;
+                }
             }
         };
     }

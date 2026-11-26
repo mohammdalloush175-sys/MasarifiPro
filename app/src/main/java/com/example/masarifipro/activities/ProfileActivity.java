@@ -44,6 +44,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.auth.UserInfo;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.Source;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -65,6 +66,7 @@ public class ProfileActivity extends AppCompatActivity {
     private String uid;
     private GoogleSignInClient mGoogleSignInClient;
     private AppDatabase db;
+    private boolean nameEdited;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
 
     @Override
@@ -310,6 +312,7 @@ public class ProfileActivity extends AppCompatActivity {
         executor.execute(() -> {
             AppUser localUser = db.userDao().getUserByUid(uid);
             runOnUiThread(() -> {
+                if (nameEdited) return;
                 if (localUser != null && !TextUtils.isEmpty(localUser.getName())) {
                     tvUserName.setText(localUser.getName());
                 }
@@ -318,32 +321,21 @@ public class ProfileActivity extends AppCompatActivity {
 
         // 2. تحديث من Firestore عند توفر الشبكة
         DocumentReference docRef = dbFirestore.collection("users").document(uid).collection("profile").document("info");
-        docRef.get().addOnSuccessListener(documentSnapshot -> {
-            if (documentSnapshot.exists()) {
-                String name = documentSnapshot.getString("name");
-                if (!TextUtils.isEmpty(name)) {
-                    tvUserName.setText(name);
-                    // مزامنة Room DB بالاسم القادم من Firestore
-                    saveNameToRoom(name);
-                } else {
+        docRef.get(Source.SERVER).addOnSuccessListener(snapshot -> executor.execute(() -> {
+            if (db.syncOperationDao().countOperationsForDocument("profile", "info") > 0) return;
+
+            String remoteName = snapshot.getString("name");
+            AppUser localUser = db.userDao().getUserByUid(uid);
+            runOnUiThread(() -> {
+                if (nameEdited) return;
+                if (!TextUtils.isEmpty(remoteName)) {
+                    tvUserName.setText(remoteName);
+                    saveNameToRoom(remoteName);
+                } else if (localUser == null || TextUtils.isEmpty(localUser.getName())) {
                     setDefaultName();
                 }
-            } else {
-                // لا يوجد ملف في Firestore — استخدم Room أو الاسم الافتراضي
-                executor.execute(() -> {
-                    AppUser localUser = db.userDao().getUserByUid(uid);
-                    runOnUiThread(() -> {
-                        if (localUser != null && !TextUtils.isEmpty(localUser.getName())) {
-                            tvUserName.setText(localUser.getName());
-                        } else {
-                            setDefaultName();
-                        }
-                    });
-                });
-            }
-        }).addOnFailureListener(e -> {
-            // Offline أو خطأ — Room DB يعطي النتيجة المؤقتة بالفعل من الخطوة 1
-        });
+            });
+        }));
     }
 
     private void setDefaultName() {
@@ -421,6 +413,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void updateName(String newName) {
         if (uid == null) return;
+        nameEdited = true;
         tvUserName.setText(newName);
         saveNameToRoom(newName);          // ← حفظ فوري في Room DB (يعمل Offline)
         saveProfileToFirestore(newName);  // ← رفع للـ Firestore عند توفر الشبكة
